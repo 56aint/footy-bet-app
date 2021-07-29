@@ -1,3 +1,45 @@
+
+## STEPS
+  ### Fire up the server/api
+  ```docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api:2.0.0```
+
+  ### Tests
+   **K6**
+      ```sudo apt-get update```
+      ```sudo apt-get install k6```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # Sky Betting & Gaming Tech Test
 
 This test comes with a mock API and WebSocket server that represents a snapshot of some live football events we offer betting on at Sky Bet.
