@@ -1,0 +1,15 @@
+{
+  "name": "skybet-tech-test",
+  "version": "1.0.0",
+  "description": "This test comes with a mock API and WebSocket server that represents a snapshot of some live football events we offer betting on at Sky Bet.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com/56aint/skybet-tech-test.git"
+  },
+  "author": "",
+  "license": "ISC"
+}
