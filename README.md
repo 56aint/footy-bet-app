@@ -7,16 +7,16 @@
 2. Write tests: k6 and mocha for the API
 
 3. Use data provided in background.md to build frontend
-   Event                            Eventid     
-	Premier League                     Null
-	FA Cup                             Null
-	Football Live                      Null
+   * Event                            Eventid     
+	* Premier League                     Null
+	* FA Cup                             Null
+	* Football Live                      Null
 	
-	LiveFootball  Betting-Pricee   Betting-Outcome  Betting-Market
+	* LiveFootball  Betting-Price   Betting-Outcome  Betting-Market
                                                      e.g: Full Time Result: Home/Draw/Away
 													      Suspended
     
-    ....more to be added and sorted with wireframing.
+   * ....more to be added and sorted with wireframing.
 
 
 4. Connect frontend to the backend to build tha App.
@@ -29,13 +29,20 @@
 
   #### Tests
    **K6**
-      ```sudo apt-get update```
-      ```sudo apt-get install k6```
+   ```sudo apt-get update```
+   ```sudo apt-get install k6```
+
    **unit-test/mocha**
-      -- with the server running on http://localhost:8888/
+     - with the server running on http://localhost:8888/
    ```npm install --save-dev mocha chai chai-http```
+   ```to run: npm test```
+   
       I have used Chai for the assert library, Chai-Http for HTTP request client library, and Mocha for test framework.
-      
+
+   
+ #### Frontend
+  I decided to make the UI simple by using ```html``` ```css``` & ```js```
+  
 
 
 
