@@ -42,4 +42,28 @@ describe("API test", () => {
         done();
       });
   });
+  it("event endpoint is working", (done) => {
+    chai
+      .request(baseUrl)
+      .get("/sportsbook/event/21249937")
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.an("object");
+        console.log(res.body);
+        done();
+      });
+  });
+  it("outcome endpoint is working", (done) => {
+    chai
+      .request(baseUrl)
+      .get("/sportsbook/outcome/367532290")
+      .end((err, res) => {
+        expect(res).to.have.status(200);
+        expect(res).to.be.json;
+        expect(res.body).to.be.an("object");
+        console.log(res.body);
+        done();
+      });
+  });
 });
