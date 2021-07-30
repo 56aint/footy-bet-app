@@ -1,12 +1,42 @@
 
 ## STEPS
-  ### Fire up the server/api
+
+### Project plan
+1. Set server up -- clone the api and fire it up in the docker
+    
+2. Write tests: k6 and mocha for the API
+
+3. Use data provided in background.md to build frontend
+   Event                            Eventid     
+	Premier League                     Null
+	FA Cup                             Null
+	Football Live                      Null
+	
+	LiveFootball  Betting-Pricee   Betting-Outcome  Betting-Market
+                                                     e.g: Full Time Result: Home/Draw/Away
+													      Suspended
+    
+    ....more to be added and sorted with wireframing.
+
+
+4. Connect frontend to the backend to build tha App.
+
+
+
+
+  #### Fire up the server/api
   ```docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api:2.0.0```
 
-  ### Tests
+  #### Tests
    **K6**
       ```sudo apt-get update```
       ```sudo apt-get install k6```
+   **unit-test/mocha**
+      -- with the server running on http://localhost:8888/
+   ```npm install --save-dev mocha chai chai-http```
+      I have used Chai for the assert library, Chai-Http for HTTP request client library, and Mocha for test framework.
+      
+
 
 
 
