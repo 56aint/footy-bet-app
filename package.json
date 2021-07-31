@@ -8,9 +8,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com/56aint/skybet-tech-test.git"
+    "url": ""
   },
-  "author": "Aaron Hays",
+  "author": "",
   "license": "ISC",
   "devDependencies": {
     "chai": "^4.3.4",

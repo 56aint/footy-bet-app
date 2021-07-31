@@ -1,3 +1,4 @@
+### This project has been achieved on Ubuntu 20.04.2 LTS OS
 
 ## STEPS
 
@@ -25,7 +26,11 @@
 
 
   #### Fire up the server/api
-  ```docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api:2.0.0```
+  ```bash 
+  docker run -it --rm --name sbg-tech-test-api -p 8888-8890:8888-8890 sbgtechtest/api:2.0.0
+  or
+  docker-compose up
+  ```
 
   #### Tests
    **K6**
@@ -38,7 +43,11 @@
       to install: npm install --save-dev mocha chai chai-http
       to run: npm test
    ```
-   
+   **unit-test/sinon & nyc**
+   ```bash
+      to install: npm install --save-dev sinon nyc
+      to run: npm test
+   ```
       I have used **Chai** for the assert library, **Chai-Http** for HTTP request client library, and **Mocha** for test framework.
       I have used **sinon** to mock WebSocket Server and to spy/stub connection-code.
       nyc for code coverage
@@ -46,6 +55,14 @@
    
  #### Frontend
   I decided to make the UI simple by using ```html``` ```css``` & ```js```
+
+  ## Bug 
+  I have had to suspend this project, as I have not been able to connect my frontend with the WebSocket
+  via the browser. The most useful information i gatherered from the developer console is as follows:
+     currentTarget: WebSocket {url: "ws://localhost:8888/", readyState: 3,
+     readyState: 3 means the connection kept closing.
+     * I disabled my adblocker, turned my antivirus off, but l all to no avail.
+     * CORS does not restrict data transmitted via WebSocket 
 
 
 

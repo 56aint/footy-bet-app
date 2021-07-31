@@ -1,25 +1,30 @@
 function socketConnection() {
 
-  const w = new WebSocket("ws://localhost:8888");
+  const ws = new WebSocket("ws://localhost:8888");
+  //const ws = new WebSocket("ws://localhost:8888");
 
-  w.addEventListener("message", (e) => console.log(e.data)); // logs all data to console
+  ws.addEventListener("open", function() {
+    console.log("Connection opened!");
+  });
 
-  w.addEventListener("error", function (event) {
+  ws.addEventListener("message", (e) => console.log(e.data)); // logs all data to console
+
+  ws.addEventListener("error", function (event) {
     console.log("WebSocket error: ", event);
   }); // logs error to console
 
-  w.onopen = function () {
+  ws.onopen = function () {
     console.log("connected to the server");
   }; // logs connection to console
 
-  w.onmessage = function (message) {
+  ws.onmessage = function (message) {
     console.log("Received:", message.data);
   }; // logs received data to console
 
-  w.onclose = function (event) {
-    console.log("Connection closed: ", event);
+  ws.onclose = function (event) {
+    console.log("Connection closed!: ", event);
   }; // logs connection close to console
-  return w;
+  return ws;
 };
 
 module.exports = socketConnection;
