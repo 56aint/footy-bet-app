@@ -37,12 +37,13 @@
    ```npm install --save-dev mocha chai chai-http```
    ```to run: npm test```
    
-      I have used Chai for the assert library, Chai-Http for HTTP request client library, and Mocha for test framework.
+      I have used **Chai** for the assert library, **Chai-Http** for HTTP request client library, and **Mocha** for test framework.
+      I have used **sinon** to mock WebSocket Server and to spy/stub connection-code.
 
    
  #### Frontend
   I decided to make the UI simple by using ```html``` ```css``` & ```js```
-  
+
 
 
 
