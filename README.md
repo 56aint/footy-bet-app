@@ -34,11 +34,14 @@
 
    **unit-test/mocha**
      - with the server running on http://localhost:8888/
-   ```npm install --save-dev mocha chai chai-http```
-   ```to run: npm test```
+   ```bash 
+      to install: npm install --save-dev mocha chai chai-http
+      to run: npm test
+   ```
    
       I have used **Chai** for the assert library, **Chai-Http** for HTTP request client library, and **Mocha** for test framework.
       I have used **sinon** to mock WebSocket Server and to spy/stub connection-code.
+      nyc for code coverage
 
    
  #### Frontend

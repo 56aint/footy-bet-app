@@ -4,3 +4,4 @@
 
 # testing
 /coverage
+/.nyc_output
