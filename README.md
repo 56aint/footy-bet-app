@@ -59,6 +59,7 @@
   ## Bug 
   I have had to suspend this project, as I have not been able to connect my frontend with the WebSocket
   via the browser. The most useful information i gatherered from the developer console is as follows:
+  
      currentTarget: WebSocket {url: "ws://localhost:8888/", readyState: 3,
      readyState: 3 means the connection kept closing.
      * I disabled my adblocker, turned my antivirus off, but l all to no avail.
