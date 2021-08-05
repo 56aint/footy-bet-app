@@ -1,13 +1,12 @@
 function socketConnection() {
 
-  const ws = new WebSocket("ws://localhost:8888");
+  const ws = new WebSocket("ws://localhost:8889");
   //const ws = new WebSocket("ws://localhost:8888");
-
+  
+  
   ws.addEventListener("open", function() {
     console.log("Connection opened!");
   });
-
-  ws.addEventListener("message", (e) => console.log(e.data)); // logs all data to console
 
   ws.addEventListener("error", function (event) {
     console.log("WebSocket error: ", event);
@@ -16,6 +15,8 @@ function socketConnection() {
   ws.onopen = function () {
     console.log("connected to the server");
   }; // logs connection to console
+
+  //ws.addEventListener("message", (e) => console.log(e.data)); // logs all data to console
 
   ws.onmessage = function (message) {
     console.log("Received:", message.data);

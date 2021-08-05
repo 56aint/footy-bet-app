@@ -27,6 +27,6 @@ describe("Socket", () => {
 
     const event = {};
     oncloseSpy(event);
-    expect(logSpy.thirdCall.calledWith("Connection closed: ", event)).to.be.true;
+    expect(logSpy.thirdCall.calledWith("Connection closed!: ", event)).to.be.true;
   });
 });

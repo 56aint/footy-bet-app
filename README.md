@@ -33,9 +33,13 @@
   ```
 
   #### Tests
-   **K6**
-   ```sudo apt-get update```
-   ```sudo apt-get install k6```
+   **K6** --*api response*
+   ```bash
+      install: sudo apt-get update
+               sudo apt-get install k6
+      run: k6 run k6-test/ws-api_status.js
+           k6 run k6-test/sBook-api_status.js
+   ```
 
    **unit-test/mocha**
      - with the server running on http://localhost:8888/

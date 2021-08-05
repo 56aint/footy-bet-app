@@ -5,8 +5,8 @@ const baseUrl = "http://localhost:8888";
 
 chai.use(chaiHttp);
 
-describe("API test", () => {
-  it("server/api is working", (done) => {
+describe("Sportsbook API", () => {
+  xit("server/api is working", (done) => {
     chai
       .request(baseUrl)
       .get("/")
@@ -18,7 +18,7 @@ describe("API test", () => {
         done();
       });
   });
-  it("football-live endpoint is working", (done) => {
+  xit("football-live endpoint is working", (done) => {
     chai
       .request(baseUrl)
       .get("/football/live")
@@ -30,7 +30,7 @@ describe("API test", () => {
         done();
       });
   });
-  it("market endpoint is working", (done) => {
+  xit("market endpoint is working", (done) => {
     chai
       .request(baseUrl)
       .get("/sportsbook/market/93649114")
@@ -42,7 +42,7 @@ describe("API test", () => {
         done();
       });
   });
-  it("event endpoint is working", (done) => {
+  xit("event endpoint is working", (done) => {
     chai
       .request(baseUrl)
       .get("/sportsbook/event/21249937")
@@ -54,7 +54,7 @@ describe("API test", () => {
         done();
       });
   });
-  it("outcome endpoint is working", (done) => {
+  xit("outcome endpoint is working", (done) => {
     chai
       .request(baseUrl)
       .get("/sportsbook/outcome/367532290")
