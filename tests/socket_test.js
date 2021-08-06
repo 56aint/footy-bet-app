@@ -3,9 +3,9 @@ const { expect } = require("chai");
 const socketConnection = require("../utils/socket");
 
 class WebSocket {
-  constructor(uri) {} 
-  onopen() {}
-  onmessage() {}
+  //constructor(uri) {} 
+  //onopen() {}
+  //onmessage() {}
   addEventListener(event, listener) {}
 }
 global.WebSocket = WebSocket;

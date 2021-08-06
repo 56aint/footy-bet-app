@@ -6,7 +6,7 @@ const baseUrl = "http://localhost:8889";
 chai.use(chaiHttp);
 
 describe("WebSocket API", () => {
-  it("server/api is working", (done) => {
+  it("server/api is not responding to HTTP protocol", (done) => {
     chai
       .request(baseUrl)
       .get("/")

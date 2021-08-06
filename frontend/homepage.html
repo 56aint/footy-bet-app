@@ -5,6 +5,7 @@
   <title>SKYBET</title>
   <link rel="stylesheet" href="style.css">
   <script type="text/javascript" src="../utils/socket.js"></script>
+  <script type="text/javascript" src="../utils/api-calls.js"></script>
 </head>
 
 <body>
@@ -15,12 +16,13 @@
       </div>
       <div>
         <ul class="nav">
-          <li> <a href="#" onclick="socketConnection();return false ">Run SKYBET-WebSocket Home</a></li>
+          <li> <a href="#" onclick="socketConnection();return false ">Test WebSocket-Connection</a></li>
+          <li> <a href="#" onclick="getEvent();return false ">Event</a></li>
           <li> <a href="#" onclick="getLiveEvents();return false ">Live Events</a></li>
-          <li> <a href="#" onclick="getLiveEvents();return false ">Event</a></li>
-          <li> <a href="#" onclick="getLiveEvents();return false ">Live Events</a></li>
-          <li> <a href="#" onclick="getLiveEvents();return false ">Live Events</a></li>
-          <li> <a href="#" onclick="getLiveEvents();return false ">Live Events</a></li>
+          <li> <a href="#" onclick="getLiveEvents();return false ">Market</a></li>
+          <li> <a href="#" onclick="getLiveEvents();return false ">Outcomes</a></li>
+          <li> <a href="#" onclick="getLiveEvents();return false ">Market Updates</a></li>
+          <li> <a href="#" onclick="getLiveEvents();return false ">Outcome Updates</a></li>
           
     </div>
   </div>
