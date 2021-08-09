@@ -33,7 +33,7 @@ describe("WebSocket API", () => {
       .request(baseUrl)
       .get("/xxxx")
       .end((err, res) => {
-        expect(res).to.have.status(400);
+        expect(res).to.have.status(426);
         done();
       });
   });

@@ -1,7 +1,26 @@
 //const ws = new WebSocket("ws://localhost:8889");
 
+const footyEvent = document.getElementById("footyEvents");
+const input = document.getElementById("footyEvent");
+const button = document.getElementById("send");
+
+// button.disabled = true;
+button.addEventListener("click", getEvent, false);
+
 function getEvent() {
   const ws = new WebSocket("ws://localhost:8889");
+  /* const event = document.getElementById("event");
+  const textarea = document.getElementById("event");
+  const button = document.getElementById("footballEvent");
+
+  button.disabled = true;
+  button.addEventListener("click", sendMessage, false);
+ */
+
+  /* ws.onopen = () => {
+    button.disabled = false
+  } */
+
   ws.onopen = () =>
     ws.send(
       JSON.stringify({
@@ -14,10 +33,15 @@ function getEvent() {
     );
   ws.addEventListener("message", (event) => {
     // console.log(event.data);
-    console.log(JSON.parse(event.data));
+
+    const newFootyEvent = document.createElement("div");
+    newFootyEvent.innerHTML = event.data;
+    footyEvent.appendChild(newFootyEvent);
+    
+    // console.log(JSON.parse(event.data));
   }); // logs all data to console
 }
-function getMarket() {
+/* function getMarket() {
   const ws = new WebSocket("ws://localhost:8889");
   ws.onopen = () =>
     ws.send(
@@ -68,13 +92,13 @@ function allOutcomeUpdates() {
     ws.send(JSON.stringify({ type: "subscribe", keys: ["o.*"] }));
 }
 
-//getEvent","getMarket","getOutcome","getLiveEvents"],"responseTypes":
+//getEvent","getMarket","getOutcome","getLiveEvents"],"responseTypes": */
 
 module.exports = {
   getEvent,
-  getMarket,
+  /* getMarket,
   getOutcome,
   getLiveEvents,
   allMarketUpdates,
-  allOutcomeUpdates,
+  allOutcomeUpdates, */
 };
