@@ -9,18 +9,6 @@ button.addEventListener("click", getEvent, false);
 
 function getEvent() {
   const ws = new WebSocket("ws://localhost:8889");
-  /* const event = document.getElementById("event");
-  const textarea = document.getElementById("event");
-  const button = document.getElementById("footballEvent");
-
-  button.disabled = true;
-  button.addEventListener("click", sendMessage, false);
- */
-
-  /* ws.onopen = () => {
-    button.disabled = false
-  } */
-
   ws.onopen = () =>
     ws.send(
       JSON.stringify({
