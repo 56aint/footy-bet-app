@@ -4,6 +4,8 @@ const ws = new WebSocket(url);
 const message = document.getElementById("footyEvent");
 
 
+
+
 function getEvent() {
   ws.send(
     JSON.stringify({
