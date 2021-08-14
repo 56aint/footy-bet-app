@@ -9,7 +9,7 @@
  
   
  
- function getEvent() {
+ function getEvent(event) {
    ws.onopen = () =>
      ws.send(
        JSON.stringify({
@@ -20,17 +20,35 @@
          id: 21249934,
        })
      );
+/* 
+     ws.onopen = function getEvent(event) {
+      ws.send(
+        JSON.stringify({
+          type: "subscribe",
+          keys: ["e.21249934"],
+          clearSubscription: false,
+          type: "getEvent",
+          id: 21249934,
+        })
+      ); */
  
    ws.addEventListener("message", (event) => {
      /* const newMessage = document.createElement("div"); // Create a new message
      newMessage.innerHTML = event.data; // Set the message from webSocket API
      message.appendChild(newMessage); // Add the message to the DOM */
-     data = event.data;
+     //const data = event.data;
+
+     const parsedData = JSON.parse(event.data);
+     //console.log(parsedData);
 
      /* data.map((doc) => {
       eventTime.innerHTML = data[doc].startTime
      }) */
-     eventTime.innerHTML = data.startTime
+
+     eventTime.innerHTML = `Date & Time: ${parsedData.data.startTime}`
+     console.log(parsedData.data.startTime);
+     homeTeamName.innerHTML =  parsedData.data.competitors[0].name
+     awayTeamName.innerHTML = parsedData.data.competitors[1].name
      //eventTime.innerHTML = JSON.parse(data).startTime
      //eventTime.innerHTML = data[0]
      //eventTime.innerHTML = data[1]
@@ -43,10 +61,11 @@
      eventDat.textContent = data[2];
      eventTime.appendChild(eventDat); */
 
-     eventData.innerHTML = JSON.parse(data);
+     //eventData.innerHTML = JSON.stringify(parsedData);
     
      //console.log(Object.keys(JSON.parse(data)));
-     console.log(JSON.parse(data));
+     //console.log(JSON.parse(data));
+     console.log(parsedData);
    }); // logs all data to console
  }
  
