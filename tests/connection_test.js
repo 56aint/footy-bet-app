@@ -1,6 +1,6 @@
 const sinon = require("sinon");
 const { expect } = require("chai");
-const socketConnection = require("../utils/connection");
+const socketConnection = require("../js/connection");
 
 class WebSocket {
   //constructor(uri) {} 
