@@ -10,7 +10,7 @@
 <body>
 
 
-  <div class="main">
+  <!-- <div class="main">
     <div class="navbar">
       <div class="icon">
         <h2 class="logo">SKYBET</h2>
@@ -24,22 +24,22 @@
 
         <ul class="nav">
           <li> <a href="#" onclick="socketConnection();return false ">Test WebSocket-Connection</a></li>
-          <li> <a href="#" onclick="getEvent();return false ">Football</a></li>
-          <script src="../utils/api-calls/footballEvent.js"></script>
 
-          <!-- <li> <a href="#" onclick="getLiveEvents();return false ">Live Football</a></li>
+          <li> <a href="#football-event">Football</a></li>
+
+          <li> <a href="#" onclick="getLiveEvents();return false ">Live Football</a></li>
           <li> <a href="#" onclick="getMarket();return false ">Market</a></li>
           <li> <a href="#" onclick="getLiveEvents();return false ">Outcomes</a></li>
           <li> <a href="#" onclick="allMarketUpdates();return false ">Market Updates</a></li>
-          <li> <a href="#" onclick="getLiveEvents();return false ">Outcome Updates</a></li> -->
+          <li> <a href="#" onclick="getLiveEvents();return false ">Outcome Updates</a></li>
 
         </ul>
 
       </div>
     </div>
-  </div>
+  </div> -->
 
-  <div class="container">
+  <div id="football-event" class="container">
 
     <h1>Football</h1>
 
@@ -60,13 +60,19 @@
       <div class="team">
         <p id="awayName">SK Sigma</p>
       </div>
+      <script src="../utils/api-calls/footyEvent.js"></script>
+    </div>
 
+    <div class="title-box">
+      <p id="homeWin">Win 3.25</p>
+      <script src="../utils/api-calls/market.js"></script>
+      <p id="draw">Outcome</p>
+      <script src="../utils/api-calls/outcome.js"></script>
     </div>
 
     <hr>
     <div id="eventData" class="event-data"></div>
-    
-    <script src="../utils/api-calls/footyEvent.js"></script>
+
   </div>
   
 
