@@ -60,24 +60,24 @@
       nyc for code coverage
 
    
- #### Frontend
-  I decided to make the UI simple by using ```html``` ```css``` & ```js```
+ ## Frontend
+  I decided to make the UI simple by using `html`, `css` & `js`
 
-  ## Browserify, tinyify
-  *  To bring WebSocket connection in one place, *connnection.js* has to be *required* in other *js* files where the connection is needed, but because the browser does not understand *require*(nodeJs function for nodeJS environment only). Hence, *browserify*...
+   ### Browserify, tinyify
+  *  To bring WebSocket connection in one place, *`connnection.js`* has to be *`required`* in other *`js`* files where the connection is needed, but because the browser does not understand *`commonJS module-exports & require`*(nodeJs function for nodeJS environment only). Hence, *`browserify`*...
   *  Tinyify is a library/pluggin that will help compress the code by removing spaces, indent and unused codes.
-  *  Because bundling makes debugging more difficult, thus, i used `-d to get *sourcemap* `.
+  *  Because bundling makes debugging more difficult, thus, i used: `flag -d to get *sourcemap*`.
   ```bash
-      install: npm install browserify
+      to install: npm install browserify
       running:  browserify ./js/event/footyEvent.js > ./js/event/dist/footyEventBundle.js
 
-      install: npm install --save-dev tinyify
+      to install: npm install --save-dev tinyify
       running:  browserify ./js/event/footyEvent.js > ./js/event/dist/footyEventBundle.js --pluggin tinyify
 
       source-map: browserify ./js/event/footyEvent.js > ./js/event/dist/footyEventBundle.js -d
 
       Requiring connection.js by extracting it form the bundle: browserify ./js/event/footyEvent.js -x ./js/connection.js > ./js/event/dist/footyEventBundle.js
-   ```
+  ```
 
   
 
