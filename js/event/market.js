@@ -1,5 +1,4 @@
-const resultHomewWin = document.querySelector("#homeWin");
-const resultAwayWin = document.querySelector("#awayWin");
+const resultMarket = document.querySelector("#market");
 
 function getMarket() {
   const url = `ws://localhost:8889`;
@@ -16,7 +15,7 @@ function getMarket() {
   ws.addEventListener("message", (market) => {
     const parsedData = JSON.parse(market.data);
 
-    resultHomewWin.innerHTML = parsedData.data.name;
+    resultMarket.innerHTML = parsedData.data.name;
     console.log(parsedData);
   });
 }

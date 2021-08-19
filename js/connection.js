@@ -1,10 +1,9 @@
 function socketConnection() {
 
   const ws = new WebSocket("ws://localhost:8889");
-  //const ws = new WebSocket("ws://localhost:8888");
-  
-  
-  ws.addEventListener("open", function() {
+
+
+  ws.addEventListener("open", function () {
     console.log("Connection opened!");
   });
 
@@ -26,7 +25,13 @@ function socketConnection() {
     console.log("Connection closed!: ", event);
   }; // logs connection close to console
   return ws;
-};
+}
 
 
-module.exports = socketConnection;
+/* module.exports = socketConnection; */
+
+/* if(module) module.exports = socketConnection; // On node.js, use exports
+else if(Window) Window.socketConnection = socketConnection(); // In browser, use window
+else console.error('Unknown environment'); */
+
+/* if (typeof module !== 'undefined') module.exports = { socketConnection };  */

@@ -1,4 +1,4 @@
-const resultOutcome = document.querySelector("#draw");
+const resultOutcome = document.querySelector("#ft-outcome");
 
 function getOutcome() {
   const url = `ws://localhost:8889`;
