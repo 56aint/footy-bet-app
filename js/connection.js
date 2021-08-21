@@ -28,7 +28,7 @@ function socketConnection() {
 }
 
 
-/* module.exports = socketConnection; */
+module.exports = socketConnection; 
 
 /* if(module) module.exports = socketConnection; // On node.js, use exports
 else if(Window) Window.socketConnection = socketConnection(); // In browser, use window

@@ -30,4 +30,4 @@ function getEvent() {
   });
 }
 
-getEvent();
+window.onload = getEvent();

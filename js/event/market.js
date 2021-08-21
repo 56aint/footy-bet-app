@@ -1,8 +1,11 @@
+const socketConnection = require('../connection')
+const ws = socketConnection();
+
 const resultMarket = document.querySelector("#market");
 
 function getMarket() {
-  const url = `ws://localhost:8889`;
-  const ws = new WebSocket(url);
+  /* const url = `ws://localhost:8889`;
+  const ws = new WebSocket(url); */
   ws.onopen = () =>
     ws.send(
       JSON.stringify({
@@ -20,4 +23,4 @@ function getMarket() {
   });
 }
 
-getMarket();
+window.onload = getMarket();

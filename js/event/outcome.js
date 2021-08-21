@@ -1,3 +1,7 @@
+const socketConnection = require('../connection')
+const ws = socketConnection();
+
+
 const resultOutcome = document.querySelector("#ft-outcome");
 
 function getOutcome() {
@@ -20,4 +24,4 @@ function getOutcome() {
   });
 }
 
-getOutcome();
+window.onload = getOutcome();
