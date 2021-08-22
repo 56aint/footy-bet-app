@@ -40,7 +40,7 @@ $(document).ready(function () {
   }
   getEvent();
 
-  
+
   const resultHomewWin = document.querySelector("#homeWin");
   const resultAwayWin = document.querySelector("#awayWin");
 
