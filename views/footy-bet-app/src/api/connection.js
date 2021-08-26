@@ -1,4 +1,4 @@
-export const socketConnection = () {
+function socketConnection() {
 
   const ws = new WebSocket("ws://localhost:8889");
   //const ws = new WebSocket("ws://localhost:8888");
@@ -27,3 +27,5 @@ export const socketConnection = () {
   }; // logs connection close to console
   return ws;
 };
+
+export default socketConnection;

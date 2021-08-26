@@ -1,15 +1,14 @@
-const socketConnection = require('./connection')
+import socketConnection from './connection'
 const ws = socketConnection();
 
-
-export const getEvent() {
- /*  const url = `ws://localhost:8889`;
+function getEvent() {
+  /* const url = `ws://localhost:8889`;
   const ws = new WebSocket(url); */
 
-  const eventTime = document.querySelector("#startTime");
+  /* const eventTime = document.querySelector("#startTime");
   const homeTeamName = document.querySelector("#homeName");
   const awayTeamName = document.querySelector("#awayName");
-  const eventData = document.querySelector("#eventData");
+  const eventData = document.querySelector("#eventData"); */
 
   ws.onopen = () =>
     ws.send(
@@ -25,11 +24,13 @@ export const getEvent() {
   ws.addEventListener("message", (event) => {
     const parsedData = JSON.parse(event.data);
 
-    eventTime.innerHTML = `Date & Time: ${parsedData.data.startTime}`;
+    /* eventTime.innerHTML = `Date & Time: ${parsedData.data.startTime}`;
     console.log(parsedData.data.startTime);
     homeTeamName.innerHTML = parsedData.data.competitors[0].name;
-    awayTeamName.innerHTML = parsedData.data.competitors[1].name;
+    awayTeamName.innerHTML = parsedData.data.competitors[1].name; */
 
     console.log(parsedData);
   }); // logs all data to console
 }
+
+export default getEvent;
