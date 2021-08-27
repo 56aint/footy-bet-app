@@ -8,7 +8,31 @@ exports[`App renders correctly 1`] = `
     <div
       class="footyevent"
     >
-       This is footyEvent.js 
+      <div
+        class="container"
+      >
+        <h1>
+          Football
+        </h1>
+        <div
+          class="title-box"
+        >
+          <p
+            class="startTime"
+          >
+            Event Date
+          </p>
+        </div>
+        <div
+          class="title-box"
+        >
+          <p
+            class="teamsName"
+          >
+            Home-Team VS Away-Team
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </DocumentFragment>

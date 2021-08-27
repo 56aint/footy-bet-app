@@ -1,6 +1,5 @@
 import "../Styles/App.css";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import FootyEvent from "./FootyEvent";
 import MatchDay from "./matchDay";
 
 function App() {
