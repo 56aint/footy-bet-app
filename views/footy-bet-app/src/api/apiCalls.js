@@ -1,7 +1,7 @@
 import socketConnection from './connection'
 const ws = socketConnection();
 
-function getEvent() {
+export default function getEvent() {
   /* const url = `ws://localhost:8889`;
   const ws = new WebSocket(url); */
 
@@ -32,5 +32,4 @@ function getEvent() {
     console.log(parsedData);
   }); // logs all data to console
 }
-
-export default getEvent;
+//export default getEvent;
