@@ -1,12 +1,12 @@
-import React, { useEffect } from "react";
-import getEvent from "../api/apiCalls";
-import FootyEvent from "./FootyEvent";
+import React, { useEffect } from 'react';
+import getEvent from '../api/apiCalls';
+import FootyEvent from './FootyEvent';
 
 function MatchDay() {
-  //const [match, setMatch] = useState();
+  // const [match, setMatch] = useState();
 
   useEffect(() => {
-    getEvent()
+    getEvent();
   }, []);
   return (
     <>

@@ -1,6 +1,6 @@
 export default function socketConnection() {
   const ws = new WebSocket('ws://localhost:8889');
-
+  /* eslint-disable */
   ws.addEventListener('open', () => {
     console.log('Connection opened!');
   });
@@ -23,4 +23,4 @@ export default function socketConnection() {
     console.log('Connection closed!: ', event);
   }; // logs connection close to console
   return ws;
-};
+}

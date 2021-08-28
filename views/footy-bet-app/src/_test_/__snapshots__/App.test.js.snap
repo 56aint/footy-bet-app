@@ -7,6 +7,7 @@ exports[`App renders correctly 1`] = `
   >
     <div
       class="footyevent"
+      data-testid="footy-event-id"
     >
       <div
         class="container"
@@ -19,6 +20,7 @@ exports[`App renders correctly 1`] = `
         >
           <p
             class="startTime"
+            data-testid="sfooty-event-id"
           >
             Event Date
           </p>
@@ -28,6 +30,7 @@ exports[`App renders correctly 1`] = `
         >
           <p
             class="teamsName"
+            data-testid="teams-name-id"
           >
             Home-Team VS Away-Team
           </p>

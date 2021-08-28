@@ -8,7 +8,7 @@ export default function getEvent() {
 
   ws.onopen = () => ws.send(
     JSON.stringify({
-      type: 'subscribe',
+      type: 'subscribe', /* eslint-disable */
       keys: ['e.21249934'],
       clearSubscription: false,
       type: 'getEvent',

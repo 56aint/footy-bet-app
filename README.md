@@ -1,4 +1,4 @@
-#### TODO: setup response to be recieved on the DOM
+#### TODO: market & outcome
 
 
 ### This project has been achieved on Ubuntu 20.04.2 LTS OS
@@ -60,17 +60,29 @@
       nyc for code coverage
 
    
- #### Frontend
-  I decided to make the UI simple by using ```html``` ```css``` & ```js```
+  ## Frontend
+  1. I decided to make the UI simple by using `html`, `css` & `js`
 
-  ## Bug 
-  I have had to suspend this project, as I have not been able to connect my frontend with the WebSocket
-  via the browser. The most useful information i gatherered from the developer console is as follows:
+   ### Browserify, tinyify
+  *  To bring WebSocket connection in one place, *`connnection.js`* has to be *`required`* in other *`js`* files where the connection is needed, but because the browser does not understand *`commonJS module-exports & require`*(nodeJs function for nodeJS environment only). Hence, *`browserify`*...
+  *  Tinyify is a library/pluggin that will help compress the code by removing spaces, indent and unused codes.
+  *  Because bundling makes debugging more difficult, thus, i used: `flag -d to get *sourcemap*`.
+  ```bash
+      to install: npm install browserify
+      running:  browserify ./js/event/footyEvent.js > ./js/event/dist/footyEventBundle.js
+
+      to install: npm install --save-dev tinyify
+      running:  browserify ./js/event/footyEvent.js > ./js/event/dist/footyEventBundle.js --pluggin tinyify
+
+      source-map: browserify ./js/event/footyEvent.js > ./js/event/dist/footyEventBundle.js -d
+
+      Requiring connection.js by extracting it form the bundle: browserify ./js/event/footyEvent.js -x ./js/connection.js > ./js/event/dist/footyEventBundle.js
+   ```
+  2. I have gone a step further to implement the project with React 
+  ### React
+  React is a frontend framework that has libraries that can manage the UI more cleanly and efficiently, especially with the *`useState`* and *`useEffect`*
+ I have used `*Airbnb style guide*`, which is considered the standard for developing React applications. And also had it configured with *`eslint`* and *`prettier`*.
   
-     currentTarget: WebSocket {url: "ws://localhost:8888/", readyState: 3,
-     readyState: 3 means the connection kept closing.
-     * I disabled my adblocker, turned my antivirus off, but l all to no avail.
-     * CORS does not restrict data transmitted via WebSocket 
 
 
 

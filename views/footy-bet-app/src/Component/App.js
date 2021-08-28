@@ -1,6 +1,7 @@
-import "../Styles/App.css";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import MatchDay from "./matchDay";
+import React from 'react';
+import '../Styles/App.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import MatchDay from './matchDay';
 
 function App() {
   return (

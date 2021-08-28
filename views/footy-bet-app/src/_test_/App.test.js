@@ -20,7 +20,10 @@ describe("App", () => {
         <App />
       </MemoryRouter>
     );
-    const footyText = getByText(/footyEvent/i);
-    expect(footyText).toBeInTheDocument();
+    expect(getByText("Event Date")).toBeInTheDocument();
+    expect(getByText(/Home/)).toBeInTheDocument();
+    expect(getByText(/Away/)).toBeInTheDocument();
+    expect(getByTestId("footy-event-id")).toBeInTheDocument();
+    expect(getByTestId("footy-event-id")).toBeInTheDocument();
   });
 });
