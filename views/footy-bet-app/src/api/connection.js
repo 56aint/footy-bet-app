@@ -12,7 +12,6 @@ export default function socketConnection() {
   ws.onopen = function () {
     console.log('connected to the server');
   }; // logs connection to console
-
   // ws.addEventListener("message", (e) => console.log(e.data)); // logs all data to console
 
   ws.onmessage = function (message) {

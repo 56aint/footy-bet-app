@@ -1,17 +1,17 @@
 import { useState, useEffect } from 'react';
-import socketConnection from './connection';
+import socketConnection from '../connection';
 
 const ws = socketConnection();
 
 export default function GetEvent() {
   const [matchTime, setMatchTime] = useState('');
   const [teamNames, setTeamNames] = useState('');
-  // const eventTime = document.querySelector('.startTime');
-  // const fixture = document.querySelector('.teamsName');
+
   useEffect(() => {
     ws.onopen = () => ws.send(
+      /* eslint-disable */
       JSON.stringify({
-        type: 'subscribe' /* eslint-disable */,
+        type: 'subscribe',
           keys: ['e.21249934'],
           clearSubscription: false,
           type: 'getEvent',
@@ -28,14 +28,6 @@ export default function GetEvent() {
 
     ws.addEventListener('message', handleMessage);
 
-    //const parsedData = JSON.parse(event.data);
-    // console.log(parsedData);
-    // console.log(parsedData.data);
-    // console.log(parsedData.data.name);
-    //eventTime.innerHTML = `Date & Time: ${parsedData.data.startTime}`;
-    //fixture.innerHTML = parsedData.data.name;
-    // logs all data to console
-
     return () => ws.removeEventListener('message', handleMessage);
   }, []);
 
@@ -44,12 +36,12 @@ export default function GetEvent() {
       <div className="container">
         <h1>Football</h1>
         <div className="title-box">
-          <div className="startTime" data-testid="sfooty-event-id">
+          <div className="startTime" data-testid="event-time-id">
             Date & Time: {matchTime}
           </div>
         </div>
         <div className="title-box">
-          <div>{teamNames}</div>
+          <div className='teams' data-testid="playing-teams-id">{teamNames}</div>
         </div>
       </div>
     </div>

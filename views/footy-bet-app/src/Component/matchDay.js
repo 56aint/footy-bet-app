@@ -1,13 +1,8 @@
 import React from 'react';
-import GetEvent from '../api/apiCalls';
+import GetEvent from '../api/apiCalls/EventCall';
 import '../Styles/FootyEvent.css';
-// import FootyEvent from './FootyEvent';
 
 function MatchDay() {
-  // const [match, setMatch] = useState();
-  /* useEffect(() => {
-    GetEvent();
-  }, []); */
   return (
     <>
       <GetEvent />

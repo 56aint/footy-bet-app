@@ -18,22 +18,20 @@ exports[`App renders correctly 1`] = `
         <div
           class="title-box"
         >
-          <p
+          <div
             class="startTime"
-            data-testid="sfooty-event-id"
+            data-testid="event-time-id"
           >
-            Event Date
-          </p>
+            Date & Time: 
+          </div>
         </div>
         <div
           class="title-box"
         >
-          <p
-            class="teamsName"
-            data-testid="teams-name-id"
-          >
-            Home-Team VS Away-Team
-          </p>
+          <div
+            class="teams"
+            data-testid="playing-teams-id"
+          />
         </div>
       </div>
     </div>

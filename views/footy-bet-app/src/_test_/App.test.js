@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, screen } from '@testing-library/react';
+import { render } from '@testing-library/react';
 import { MemoryRouter } from "react-router-dom";
 import App from '../Component/App';
 
@@ -20,10 +20,10 @@ describe("App", () => {
         <App />
       </MemoryRouter>
     );
-    expect(getByText("Event Date")).toBeInTheDocument();
-    expect(getByText(/Home/)).toBeInTheDocument();
-    expect(getByText(/Away/)).toBeInTheDocument();
+    expect(getByText("Football")).toBeInTheDocument();
+    expect(getByText(/Date/)).toBeInTheDocument();
     expect(getByTestId("footy-event-id")).toBeInTheDocument();
-    expect(getByTestId("footy-event-id")).toBeInTheDocument();
+    expect(getByTestId("event-time-id")).toBeInTheDocument();
+    expect(getByTestId("playing-teams-id")).toBeInTheDocument();
   });
 });
