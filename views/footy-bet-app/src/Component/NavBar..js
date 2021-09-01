@@ -1,17 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import '../Styles/FootyEvent.css';
+// import '../Styles/FootyEvent.css';
+import '../Styles/NavBar.css';
 
 export default function NavBar() {
   return (
     <>
-      <div className="home-page">
+      <div className="navbar">
         <ul className="navbar-links" data-testid="navbar-links-id">
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Test WebSocket-Connection</Link>
+            <Link to="./">Home</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./my-favourite-team">My Team</Link>
+            <Link to="./my-favourite-team"/* onClick={() => window.location.reload()} */>My Team</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link to="./">Live Football</Link>
