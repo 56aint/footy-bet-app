@@ -6,34 +6,104 @@ exports[`App renders correctly 1`] = `
     class="App"
   >
     <div
-      class="footyevent"
-      data-testid="footy-event-id"
+      class="navbar"
     >
-      <div
-        class="container"
+      <ul
+        class="navbar-links"
+        data-testid="navbar-links-id"
       >
-        <h1>
-          Football
-        </h1>
-        <div
-          class="title-box"
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
         >
-          <div
-            class="startTime"
-            data-testid="event-time-id"
+          <a
+            class="navbar-item-home"
+            href="/"
           >
-            Date & Time: 
-          </div>
-        </div>
-        <div
-          class="title-box"
+            Home
+          </a>
+        </li>
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
         >
-          <div
-            class="teams"
-            data-testid="playing-teams-id"
+          <a
+            class="navbar-item-myTeam"
+            href="/my-favourite-team"
+          >
+            My Team
+          </a>
+        </li>
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
+        >
+          <a
+            href="/"
+          >
+            Live Football
+          </a>
+        </li>
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
+        >
+          <a
+            href="/"
+          >
+            Market
+          </a>
+        </li>
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
+        >
+          <a
+            href="/"
+          >
+            Outcomes
+          </a>
+        </li>
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
+        >
+          <a
+            href="/"
+          >
+            Market Updates
+          </a>
+        </li>
+        <li
+          class="navbar-links-item"
+          data-testid="navbar-links-item-id"
+        >
+          <a
+            href="/"
+          >
+            Outcomes Updates
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div
+      class="home-page"
+    >
+      <section
+        class="page"
+      >
+        <marquee
+          behavior="alternate"
+          direction="right"
+          scrollamount="5"
+        >
+          <img
+            class="ball"
+            src="football.png"
           />
-        </div>
-      </div>
+          My Team
+        </marquee>
+      </section>
     </div>
   </div>
 </DocumentFragment>

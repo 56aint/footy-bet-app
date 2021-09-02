@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import socketConnection from '../../connection';
+import NavBar from '../../../Component/NavBar.';
+import '../../../Styles/FootyEvent.css';
 
 const ws = socketConnection();
 
@@ -7,6 +9,7 @@ export default function GetEvent() {
   const [matchTime, setMatchTime] = useState('');
   const [teamNames, setTeamNames] = useState('');
   const [isLoading, setLoading] = useState(true);
+  /* const [socketData, setSocketData] = useState([]); */
 
   useEffect(() => {
     ws.onopen = () => ws.send(
@@ -22,10 +25,12 @@ export default function GetEvent() {
 
     function handleMessage(event) {
       console.log('Handling message');
-      //setLoading(true);
+      setLoading(true);
       const parsedData = JSON.parse(event.data);
-      setMatchTime(parsedData.data.startTime);
+      console.log(parsedData);
+      setMatchTime((parsedData.data.startTime));
       setTeamNames(parsedData.data.name);
+      /* setSocketData((currentSocketData) => [...currentSocketData, parsedData]); */
       setLoading(false);
     }
 
@@ -35,14 +40,15 @@ export default function GetEvent() {
     return () => ws.removeEventListener('message', handleMessage);
 
   }, []);
-  
+  // console.log(matchTime);
   return (
     <>
+    <NavBar />
       <div className="footyevent" data-testid="footy-event-id">
         <div className="container">
           <h1>Football</h1>
           <div className="title-box">
-          {isLoading && <div className="loading">Loading...wait.. or refresh</div>}
+          {isLoading && <div className="loading">Not Connected... Please Refresh</div>}
           </div>
           <div className="title-box">
             <div className="startTime" data-testid="event-time-id">
@@ -53,6 +59,11 @@ export default function GetEvent() {
             <div className="teams" data-testid="playing-teams-id">
               {teamNames}
             </div>
+          </div>
+          <div className="title-box">
+            {/* <div className="socket-data" data-testid="socket-data-id">
+              <div>{socketData.map((x) => x.toString())}</div>
+            </div> */}
           </div>
         </div>
       </div>

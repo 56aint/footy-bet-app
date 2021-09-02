@@ -1,29 +1,28 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { MemoryRouter } from "react-router-dom";
+import { MemoryRouter } from 'react-router-dom';
 import App from '../Component/App';
 
-
-describe("App", () => {
+describe('App', () => {
   test('renders correctly', () => {
     const { asFragment } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
     expect(asFragment()).toMatchSnapshot();
   });
-  
-  test("renders correctly", () => {
-    const { getByText, getByTestId } = render(
+
+  test('renders correctly', () => {
+    const { getByText, getByTestId, getAllByText } = render(
       <MemoryRouter>
         <App />
-      </MemoryRouter>
+      </MemoryRouter>,
     );
-    expect(getByText("Football")).toBeInTheDocument();
-    expect(getByText(/Date/)).toBeInTheDocument();
-    expect(getByTestId("footy-event-id")).toBeInTheDocument();
-    expect(getByTestId("event-time-id")).toBeInTheDocument();
-    expect(getByTestId("playing-teams-id")).toBeInTheDocument();
+    // expect(getAllByText(/My Team/)).toBeInTheDocument();
+    expect(getByTestId('navbar-links-id')).toBeTruthy();
+    expect(getByText(/Football/)).toBeInTheDocument();
+    expect(getByText(/Home/)).toBeInTheDocument();
+    expect(getByText(/Home/)).toHaveClass('navbar-item-home');
   });
 });

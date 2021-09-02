@@ -1,13 +1,14 @@
 import React from 'react';
-import GetEvent from '../api/apiCalls/Components/EventCall';
-import Home from './NavBar.';
-import '../Styles/FootyEvent.css';
+// import GetEvent from '../api/apiCalls/Components/EventCall';
+import NavBar from './NavBar.';
+import HomePage from './HomePage';
+// import '../Styles/FootyEvent.css';
 
 function MatchDay() {
   return (
     <>
-      <Home />
-      <GetEvent />
+      <NavBar />
+      <HomePage />
     </>
   );
 }

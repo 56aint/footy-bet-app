@@ -9,25 +9,25 @@ export default function NavBar() {
       <div className="navbar">
         <ul className="navbar-links" data-testid="navbar-links-id">
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Home</Link>
+            <Link className="navbar-item-home" to="/">Home</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./my-favourite-team"/* onClick={() => window.location.reload()} */>My Team</Link>
+            <Link className="navbar-item-myTeam" to="/my-favourite-team"/* onClick={() => window.location.reload()} */>My Team</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Live Football</Link>
+            <Link to="/">Live Football</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Market</Link>
+            <Link to="/">Market</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Outcomes</Link>
+            <Link to="/">Outcomes</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Market Updates</Link>
+            <Link to="/">Market Updates</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link to="./">Outcomes Updates</Link>
+            <Link to="/">Outcomes Updates</Link>
           </li>
         </ul>
       </div>
