@@ -34,12 +34,21 @@ export default function GetEvent() {
           id: 93648663,
         }),
       );
+      ws.send(
+        /* eslint-disable */
+        JSON.stringify({
+          type: 'subscribe',
+          keys: ['o.367526530'],
+          type: 'getOutcome',
+          id: 367526530,
+        }),
+      );
     };
     function handleMessage(event) {
       console.log('Handling message');
       setLoading(true);
       const parsedData = JSON.parse(event.data);
-      // console.log(parsedData);
+      console.log(parsedData);
       setSocketData((currentSocketData) => [...currentSocketData, parsedData]);
       setLoading(false);
     }
@@ -49,22 +58,27 @@ export default function GetEvent() {
     return () => ws.removeEventListener('message', handleMessage);
   }, []);
 
+  const eventTime = socketData.map((dataObj, index, arr) => {
+    if (dataObj.type === 'EVENT_DATA') {
+      return dataObj.data.startTime;
+    }
+  });
+  const eventTeams = socketData.map((dataObj, index, arr) => {
+    if (dataObj.type === 'EVENT_DATA') {
+      return dataObj.data.name;
+    }
+  });
+  const eventBet = socketData.map((dataObj, index, arr) => {
+    if (dataObj.type === 'MARKET_DATA') {
+      return dataObj.data.name;
+    }
+  });
+  const eventOutcome = socketData.map((dataObj, index, arr) => {
+    if (dataObj.type === 'OUTCOME_DATA') {
+      return dataObj.data.name;
+    }
+  });
 
-  const eventTime = socketData.map((x, index, arr) => {
-    if (x.type === 'EVENT_DATA') {
-      return x.data.startTime
-    } 
-  })
-  const eventTeams = socketData.map((x, index, arr) => {
-    if (x.type === 'EVENT_DATA') {
-      return x.data.name
-    } 
-  })
-  const eventBet = socketData.map((x, index, arr) => {
-    if (x.type === 'MARKET_DATA') {
-      return x.data.name
-    } 
-  })
   return (
     <>
       <NavBar />
@@ -72,23 +86,28 @@ export default function GetEvent() {
         <div className="container">
           <h1>Football</h1>
           <div className="title-box">
-            <div key="uniqueId1">
-            {isLoading && <div className="loading">Not Connected... Please Refresh</div>}
+            <div key="loading-key">
+              {isLoading && <div className="loading">Not Connected... Please Refresh</div>}
             </div>
           </div>
           <div className="title-box">
-            <div key="uniqueId2" className="teams" data-testid="playing-teams-id">
-              <p>Date: {eventTime}</p>
+            <div key="eventId" className="event-time" data-testid="event-time-id">
+              <p>DATE: {eventTime}</p>
             </div>
           </div>
           <div className="title-box">
-            <div key="uniqueId2" className="teams" data-testid="playing-teams-id">
-              <p>Teams: {eventTeams}</p>
+            <div key="eventId" className="event-teams" data-testid="playing-teams-id">
+              <p>TEAMS: {eventTeams}</p>
             </div>
           </div>
           <div className="title-box">
-            <div key="uniqueId2" className="teams" data-testid="playing-teams-id">
+            <div key="marketId" className="event-market" data-testid="event-market-id">
               <p>BET: {eventBet}</p>
+            </div>
+          </div>
+          <div className="title-box">
+            <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
+              <p>OUTCOME: {eventOutcome}</p>
             </div>
           </div>
         </div>
