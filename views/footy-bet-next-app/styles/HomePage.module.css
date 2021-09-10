@@ -1,0 +1,27 @@
+.page{
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* background: url(../../images/stadium.jpg); */
+  background-size: cover;
+  width: 100%;
+}
+
+.marquee{
+  height: 40vh
+}
+
+.ball{
+  max-width: 50px;
+  animation: animate 4s linear infinite;
+}
+
+@keyframes animate{
+  0%{
+      transform: rotate(0deg);
+  }
+  100%{
+      transform: rotate(360deg);
+  }
+}
+
