@@ -8,7 +8,7 @@ export default function NavBar() {
       <Head>
         <title>Navbar</title>
       </Head>
-      <nav className={navStyles.navbar}r>
+      <nav className={navStyles.nav}r>
         <ul className="navbar-links" data-testid="navbar-links-id">
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link className="navbar-item-home" href="/">

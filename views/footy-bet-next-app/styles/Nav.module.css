@@ -1,4 +1,4 @@
-.navbar {
+.nav {
   height: 50px;
   background-color: rgb(49, 16, 197);
   overflow: hidden;
@@ -8,14 +8,14 @@
   align-items: center;
   
 }
-.navbar ul{
+.nav ul{
   float: left;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.navbar ul li{
+.nav ul li{
   list-style: none;
   margin: 32px;
   margin-top: 27px;
@@ -23,7 +23,7 @@
 
 }
 
-.navbar a {
+.nav a {
   color: white;
   font-weight: 700;
   letter-spacing: 2px;
@@ -36,7 +36,7 @@
   border-radius: 5px;
 }
 
-.navbar a:hover {
+.nav a:hover {
   color: #17bbd8;
 }
 

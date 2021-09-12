@@ -1,10 +1,10 @@
 import NavBar from './navbar'
 import styles from "../styles/Layout.module.css";
 
-export default function ({ children }) {
+export default function Layout ({ children }) {
   return (
     <>
-    <NavBar/>
+    <NavBar />
     <div className={styles.container}>
       <main className={styles.main}>{children}</main>
     </div>
