@@ -1,14 +1,14 @@
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import { useState, useEffect } from "react";
 import socketConnection from "./api/apiCalls/connection";
 import styles from "../styles/FootyEvent.module.css";
 
 const ws = socketConnection();
 
-export default function GetEvent() {
-  const router = useRouter();
+export default function GetEvent(props) {
+  /* const router = useRouter();
   router.query.event;
-  console.log(router.query.event);
+  console.log(router.query.event); */
 
   const [isLoading, setLoading] = useState(true);
   const [socketData, setSocketData] = useState([]);
@@ -130,3 +130,4 @@ export default function GetEvent() {
     </>
   );
 }
+

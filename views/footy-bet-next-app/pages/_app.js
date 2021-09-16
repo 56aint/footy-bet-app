@@ -1,4 +1,3 @@
-
 import Layout from "../Components/Layout";
 
 function MyApp({ Component, pageProps }) {
@@ -12,9 +11,7 @@ function MyApp({ Component, pageProps }) {
 export default MyApp;
 
 /* import "../styles/globals.css";
-
 function MyApp({ Component, pageProps }) {
   return <Component {...pageProps} />;
 }
-
 export default MyApp; */

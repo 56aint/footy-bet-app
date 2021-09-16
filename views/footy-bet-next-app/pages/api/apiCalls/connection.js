@@ -1,8 +1,17 @@
-let openedSocket = null;
-export const isBrowser = typeof window !== "undefined";
+/* let openedSocket = null; */
+/* export const isBrowser = typeof window !== "undefined"; */
+
+const W3CWebSocket = require('websocket').w3cwebsocket;
+// import WebSocketAsPromised from 'websocket-as-promised';
+
 
 export default function socketConnection() {
-  const ws = isBrowser? new WebSocket('ws://localhost:8889') : null;
+  /* const ws = isBrowser? new WebSocket('ws://localhost:8889') : null; */
+  // const ws = new WebSocket('ws://localhost:8889');
+
+  const ws = new W3CWebSocket('ws://localhost:8889');
+
+
   ws.addEventListener('open', () => {
     console.log('Connection opened!');
   });
