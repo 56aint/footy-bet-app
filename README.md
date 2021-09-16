@@ -1,4 +1,4 @@
-#### TODO: market & outcome
+#### TODO: Next state management
 
 
 ### This project has been achieved on Ubuntu 20.04.2 LTS OS
@@ -61,7 +61,7 @@
 
    
   ## Frontend
-  1. I decided to make the UI simple by using `html`, `css` & `js`
+  1. I decided to make the UI simple by starting with pure `html`, `css` & `vanillaJS`. Then later incorporated: jquery, and move on to react and next.js
 
    ### Browserify, tinyify
   *  To bring WebSocket connection in one place, *`connnection.js`* has to be *`required`* in other *`js`* files where the connection is needed, but because the browser does not understand *`commonJS module-exports & require`*(nodeJs function for nodeJS environment only). Hence, *`browserify`*...
@@ -78,12 +78,21 @@
 
       Requiring connection.js by extracting it form the bundle: browserify ./js/event/footyEvent.js -x ./js/connection.js > ./js/event/dist/footyEventBundle.js
    ```
-  2. I have gone a step further to implement the project with React 
+  2. I have gone a step further to implement the project with React and next.js
   ### React
-  React is a frontend framework that has libraries that can manage the UI more cleanly and efficiently, especially with the *`useState`* and *`useEffect`*
- I have used `*Airbnb style guide*`, which is considered the standard for developing React applications. And also had it configured with *`eslint`* and *`prettier`*.
-  
+  React is a frontend framework that has libraries that can manage the UI more cleanly and efficiently, especially with the *`useState`* and *`useEffect`* to manage the app states.
+ I have used `*Airbnb style guide*`, which is considered the standard for developing React applications. And also had it configured with *`eslint`* and *`prettier`*
 
+ ### Next
+ Next.js is a React framework that has some advancement over React with extra features like: **`server-side rendering and generating static websites`**. Using *`getStaticProps`* and *`getServerSideProps`* to manage its states.
+
+
+ I have made a little changes to eslint/prettier configurations to suit next.js.
+
+ For Next to understand `webSocket`, I have had to install a third-party [websocket](https://www.npmjs.com/package/websocket) package.
+ ```
+ const W3CWebSocket = require('websocket').w3cwebsocket;
+ ```
 
 
 

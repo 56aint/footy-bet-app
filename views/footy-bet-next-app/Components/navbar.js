@@ -1,11 +1,11 @@
 // import { useRouter } from "next/router";
-import Head from "next/head";
-import Link from "next/link";
+import Head from 'next/head';
+import Link from 'next/link';
 // import GetEvent from "../pages/[event]";
-import navStyles from "../styles/Nav.module.css";
+import navStyles from '../styles/Nav.module.css';
 
 export default function NavBar() {
-/* const router = useRouter();
+  /* const router = useRouter();
 
 function showEvent() {
   router.push(GetEvent);
@@ -26,7 +26,7 @@ function showEvent() {
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link
               className="navbar-item-myTeam"
-              href="/event"  /* onClick={GetEvent} */ /* onClick={() => window.location.reload()} */
+              href="/event" /* onClick={GetEvent} */ /* onClick={() => window.location.reload()} */
               /* onClick={() => {GetEvent(); router.push("/event")}} */
               /* onClick={showEvent} */
             >
