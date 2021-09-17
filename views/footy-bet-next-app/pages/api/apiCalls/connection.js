@@ -44,4 +44,4 @@ export default function socketConnection() {
   return ws;
 }
 
-socketConnection()
+socketConnection();
