@@ -1,15 +1,22 @@
-// import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 import Head from 'next/head';
 import Link from 'next/link';
 // import GetEvent from "../pages/[event]";
 import navStyles from '../styles/Nav.module.css';
 
 export default function NavBar() {
-  /* const router = useRouter();
+  const router = useRouter();
 
-function showEvent() {
+  /* function showEvent() {
   router.push(GetEvent);
-} */
+}  */
+
+  /* const handleClick = (event, path) => {
+    event.preventDefault();
+    if (path === '/event') {
+      router.push(path);
+    }
+  }; */
 
   return (
     <>
@@ -26,11 +33,12 @@ function showEvent() {
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link
               className="navbar-item-myTeam"
+              /* as="/event" */
               href="/event" /* onClick={GetEvent} */ /* onClick={() => window.location.reload()} */
               /* onClick={() => {GetEvent(); router.push("/event")}} */
               /* onClick={showEvent} */
             >
-              My Team
+              <a onClick={() => { router.push('/event').reload(window.location); }}>My Team</a>
             </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">

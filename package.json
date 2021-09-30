@@ -1,7 +1,7 @@
 {
-  "name": "skybet-tech-test",
+  "name": "footy-bet-app",
   "version": "1.0.0",
-  "description": "This test comes with a mock API and WebSocket server that represents a snapshot of some live football events we offer betting on at Sky Bet.",
+  "description": "This UI app comes with a mock API and WebSocket server that represents a snapshot of some live football events.",
   "main": "index.js",
   "scripts": {
     "test": "nyc mocha tests"

@@ -36,6 +36,9 @@ export default function socketConnection() {
       // e.g. server process killed or network down
       alert('[close] Connection died');
     }
+    setTimeout(() => {
+      socketConnection();
+    }, 1000);
   }; // logs connection closed cleanly to the console
 
   ws.onerror = function(error) {

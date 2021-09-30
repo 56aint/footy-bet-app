@@ -1,100 +1,80 @@
-// import { useRouter } from 'next/router';
-// import { useState, useEffect } from 'react';
+/* eslint-disable no-dupe-keys */
+import { useState, useEffect } from 'react';
 import socketConnection from './api/apiCalls/connection';
 import styles from '../styles/FootyEvent.module.css';
 
 const ws = socketConnection();
 
 export default function GetEvent({ parsedData }) {
-  console.log(parsedData);
-  // const router = useRouter();
-  // router.query.event;
-  // console.log(router.query.event);
+  // console.log(parsedData);
+  const [isLoading, setLoading] = useState(false);
+  const [socketData, setSocketData] = useState([]);
 
-  // const [isLoading, setLoading] = useState(true);
-  // const [socketData, setSocketData] = useState([]);
+  useEffect(() => {
+    ws.onopen = () => {
+      ws.send(
+        JSON.stringify({
+          type: 'subscribe',
+          keys: ['e.21249934'],
+          clearSubscription: false,
+          type: 'getEvent',
+          id: 21249934,
+        }),
+      );
+      ws.send(
+        JSON.stringify({
+          type: 'subscribe',
+          keys: ['m.93648663'],
+          type: 'getMarket',
+          id: 93648663,
+        }),
+      );
+      ws.send(
+        JSON.stringify({
+          type: 'subscribe',
+          keys: ['o.367526530'],
+          type: 'getOutcome',
+          id: 367526530,
+        }),
+      );
+    };
 
-  ws.onopen = () => {
-    ws.send(
-      JSON.stringify({
-        type: 'subscribe',
-        keys: ['e.21249934'],
-        clearSubscription: false,
-        type: 'getEvent',
-        id: 21249934,
-      }),
-    );
-    ws.send(
-      JSON.stringify({
-        type: 'subscribe',
-        keys: ['m.93648663'],
-        type: 'getMarket',
-        id: 93648663,
-      }),
-    );
-    ws.send(
-      JSON.stringify({
-        type: 'subscribe',
-        keys: ['o.367526530'],
-        type: 'getOutcome',
-        id: 367526530,
-      }),
-    );
-  };
-
-  /* useEffect(() => {
     function handleMessage(event) {
       console.log('Handling message');
-      const parsedData = JSON.parse(event.data);
-      setSocketData((currentMessages) => [...currentMessages, parsedData]);
-    /* renderTime.current = matchTime;  */ // i'm not sure what you're trying to do here
-  /* }
+      setLoading(true);
+      const parsedSocketData = JSON.parse(event.data);
+      // console.log(parsedData);
+      setSocketData((currentSocketData) => {
+        return [...currentSocketData, parsedSocketData];
+      });
+      setLoading(false);
+    }
     ws.addEventListener('message', handleMessage);
-    return () => ws.removeEventListener('message', handleMessage);
-  //}, []); */
+    return () => {
+      return ws.removeEventListener('message', handleMessage);
+    };
+  }, []);
 
-  /* ws.addEventListener('message', (event) => {
-    const parsedData = JSON.parse(event.data);
-    console.log(parsedData);
-  }); */
-  /*  ws.addEventListener("message", (event) => {
-  const parsedData = JSON.parse(event.data);
-  console.log(parsedData);
-  } */
-
-  /* function handleMessage(event) {
-    console.log('Handling message');
-    // setLoading(true);
-    const parsedData = JSON.parse(event.data);
-    console.log(parsedData);
-    // setSocketData((currentSocketData) => [...currentSocketData, parsedData]);
-    // setLoading(false);
-  } */
-
-  /* ws.addEventListener('message', handleMessage);
-
-  return () => ws.removeEventListener('message', handleMessage);
-
-  /* const eventTime = socketData.map((dataObj, index, arr) => {
+  const eventTime = socketData.map((dataObj, index, arr) => {
     if (dataObj.type === 'EVENT_DATA') {
-      return dataObj.data.startTime;
+      return dataObj.data.startTime.toString();
     }
   });
   const eventTeams = socketData.map((dataObj, index, arr) => {
     if (dataObj.type === 'EVENT_DATA') {
-      return dataObj.data.name;
+      return dataObj.data.name.toString();
     }
   });
   const eventBet = socketData.map((dataObj, index, arr) => {
     if (dataObj.type === 'MARKET_DATA') {
-      return dataObj.data.name;
+      return dataObj.data.name.toString();
     }
   });
   const eventOutcome = socketData.map((dataObj, index, arr) => {
     if (dataObj.type === 'OUTCOME_DATA') {
-      return dataObj.data.name;
+      return dataObj.data.name.toString();
     }
-  }); */
+  });
 
   return (
     <>
@@ -102,22 +82,19 @@ export default function GetEvent({ parsedData }) {
         <div className={styles.container}>
           <h1 className={styles.hone}>Football</h1>
           <div className={styles.titlebox}>
-            {/* <div key="loading-key">
+            <div key="loading-key">
               {isLoading && <div className="loading">Not Connected... Please Refresh</div>}
-            </div> */}
+            </div>
           </div>
           <div className={styles.titlebox}>
             <div key="eventId" className="event-time" data-testid="event-time-id">
-              <p>
-                {`DATE: ${parsedData.DATE}`}
-                {/* {eventTime} */}
-              </p>
+              <p>{`DATE: ${eventTime}` || `DATE: ${parsedData.events[0].startTime}`}</p>
             </div>
           </div>
           <div className={styles.titlebox}>
             <div key="eventId" className="event-teams" data-testid="playing-teams-id">
               <p>
-                {`TEAMS: ${parsedData.TEAMS}`}
+                {`TEAMS: ${eventTeams}` || `TEAMS: ${parsedData.events[0].name}`}
                 {/* {eventTeams} */}
               </p>
             </div>
@@ -125,7 +102,7 @@ export default function GetEvent({ parsedData }) {
           <div className={styles.titlebox}>
             <div key="marketId" className="event-market" data-testid="event-market-id">
               <p>
-                {`BET: ${parsedData.BET}`}
+                {`BET: ${eventBet}` || `BET: ${parsedData.events[0].markets}`}
                 {/* {eventBet} */}
               </p>
             </div>
@@ -133,7 +110,7 @@ export default function GetEvent({ parsedData }) {
           <div className={styles.titlebox}>
             <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
               <p>
-                {`OUTCOME: ${parsedData.OUTCOME}`}
+                {`OUTCOME: ${eventOutcome}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
                 {/* {eventOutcome} */}
               </p>
             </div>
@@ -145,18 +122,13 @@ export default function GetEvent({ parsedData }) {
 }
 
 export const getStaticProps = async () => {
-  /* const res = (ws.onmessage = function (event) {
-    const parsedData = res.JSON.parse(event.data);
-    // console.log(parsedData);
-  }); */
+  const response = await fetch(
+    'http://localhost:8888/football/live?primaryMarkets=true&outComes=true',
+  );
+  const parsedData = await response.json();
   return {
     props: {
-      parsedData: {
-        DATE: Date(Date.now().toString()),
-        TEAMS: 'Pending Announcement',
-        BET: 'To be confirmed',
-        OUTCOME: 'Not set',
-      },
+      parsedData,
     },
   };
 };
