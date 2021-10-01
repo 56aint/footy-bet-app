@@ -10,7 +10,7 @@
     
 2. Write tests: k6 and mocha for the API
 
-3. Use data provided in background.md to build frontend
+3. Use data from the api to build frontend
    * Event                            Eventid     
 	* Premier League                     Null
 	* FA Cup                             Null
@@ -104,7 +104,7 @@
 
 
 
-
+<!---
 
 # Sky Betting & Gaming Tech Test
 
@@ -232,3 +232,4 @@ Email as an attachment or a link the git bundled repository showing your commit 
 ## Equality & Diversity 
 
 We consider all candidates equally, fairly and without bias.  To that end, we ask that you do not leave any personally identifying information in your submission (such as your name within an author field or file, or in use as test data).  We run all VCS-based submissions through an anonymiser before assessment, so that there is no identifying information in the commit history, but this will only remove references in the committing author and email address, not deep in the code submitted.
+ -->
