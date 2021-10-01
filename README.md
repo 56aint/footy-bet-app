@@ -1,20 +1,19 @@
-#### TODO: setup response to be recieved on the DOM
+#### TODO:
 
 
 ### This project has been achieved on Ubuntu 20.04.2 LTS OS
 
-## STEPS
+### AIM
+To build a UI to display some football events & bettings returned by a WebSocket API
 
 ### Project plan
 1. Set server up -- clone the api and fire it up in the docker
     
 2. Write tests: k6 and mocha for the API
 
-3. Use data from the api to build frontend
+3. Connect frontend to the backend to build tha App, using data from the api.
+   
    * Event                            Eventid     
-	* Premier League                     Null
-	* FA Cup                             Null
-	* Football Live                      Null
 	
 	* LiveFootball  Betting-Price   Betting-Outcome  Betting-Market
                                                      e.g: Full Time Result: Home/Draw/Away
@@ -23,7 +22,7 @@
    * ....more to be added and sorted with wireframing.
 
 
-4. Connect frontend to the backend to build tha App.
+4. 
 
 
 
@@ -45,7 +44,7 @@
    ```
 
    **unit-test/mocha**
-     - with the server running on http://localhost:8888/
+     - with the server running on http://localhost:8889/
    ```bash 
       to install: npm install --save-dev mocha chai chai-http
       to run: npm test
@@ -61,16 +60,9 @@
 
    
  #### Frontend
-  I decided to make the UI simple by using ```html``` ```css``` & ```js```
+  I decided to make the UI simple by using ```html``` ```css```, ```js```, ```react``` & ```nextJS```
 
-  ## Bug 
-  I have had to suspend this project, as I have not been able to connect my frontend with the WebSocket
-  via the browser. The most useful information i gatherered from the developer console is as follows:
-  
-     currentTarget: WebSocket {url: "ws://localhost:8888/", readyState: 3,
-     readyState: 3 means the connection kept closing.
-     * I disabled my adblocker, turned my antivirus off, but l all to no avail.
-     * CORS does not restrict data transmitted via WebSocket 
+Happy Coding!
 
 
 
