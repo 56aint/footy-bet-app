@@ -40,7 +40,7 @@ export default function GetEvent({ parsedData }) {
     };
 
     function handleMessage(event) {
-      console.log('Handling message');
+      console.log('Handling Single Event message');
       setLoading(true);
       const parsedSocketData = JSON.parse(event.data);
       // console.log(parsedData);

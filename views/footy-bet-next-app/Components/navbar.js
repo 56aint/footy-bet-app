@@ -11,12 +11,17 @@ export default function NavBar() {
   router.push(GetEvent);
 }  */
 
-  /* const handleClick = (event, path) => {
-    event.preventDefault();
+  /* function handleClick(event, path) {
+  // event.preventDefault();
+    setLoading(true);
     if (path === '/event') {
-      router.push(path);
+      router.push(path).reload(window.location);
     }
-  }; */
+  } */
+
+  /* useEffect(() => {
+    setTimeout(() => { return setLoading(false); }, 1000);
+  }, []); */
 
   return (
     <>
@@ -34,15 +39,16 @@ export default function NavBar() {
             <Link
               className="navbar-item-myTeam"
               /* as="/event" */
-              href="/event" /* onClick={GetEvent} */ /* onClick={() => window.location.reload()} */
-              /* onClick={() => {GetEvent(); router.push("/event")}} */
-              /* onClick={showEvent} */
+              href="/event" /* onClick={GetEvent} */ /* onClick={() => window.location.reload()}
+              onClick={() => {GetEvent(); router.push("/event")}}
+              onClick={showEvent}
+               <a onClick={() => { handleClick; }} role="link" tabIndex={0}>My Team</a> */
             >
-              <a onClick={() => { router.push('/event').reload(window.location); }}>My Team</a>
+              <a onClick={() => { router.push('/event').reload(window.location); }} role="link" tabIndex={0}>My Team</a>
             </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">Live Football</Link>
+            <Link href="/events">Live Football</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/">Market</Link>

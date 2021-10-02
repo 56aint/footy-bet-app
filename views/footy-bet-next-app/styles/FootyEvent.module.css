@@ -34,4 +34,6 @@
   font-size: 2em;
   font-weight: lighter;
 }
-
+.addlinebreak {
+  white-space: pre-line;
+}
