@@ -55,25 +55,22 @@ export default function GetEvent({ parsedData }) {
     };
   }, []);
 
-  const eventTime = socketData.map((dataObj, index, arr) => {
-    if (dataObj.type === 'EVENT_DATA') {
-      return dataObj.data.startTime.toString();
-    }
+  const eventTime = socketData.map((dataObj) => {
+    if (dataObj.type !== 'EVENT_DATA') return null;
+    return dataObj.data.startTime.toString();
   });
-  const eventTeams = socketData.map((dataObj, index, arr) => {
-    if (dataObj.type === 'EVENT_DATA') {
-      return dataObj.data.name.toString();
-    }
+
+  const eventTeams = socketData.map((dataObj) => {
+    if (dataObj.type !== 'EVENT_DATA') return null;
+    return dataObj.data.name.toString();
   });
-  const eventBet = socketData.map((dataObj, index, arr) => {
-    if (dataObj.type === 'MARKET_DATA') {
-      return dataObj.data.name.toString();
-    }
+  const eventBet = socketData.map((dataObj) => {
+    if (dataObj.type !== 'MARKET_DATA') return null;
+    return dataObj.data.name.toString();
   });
-  const eventOutcome = socketData.map((dataObj, index, arr) => {
-    if (dataObj.type === 'OUTCOME_DATA') {
-      return dataObj.data.name.toString();
-    }
+  const eventOutcome = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    return dataObj.data.name.toString();
   });
 
   return (
@@ -95,7 +92,6 @@ export default function GetEvent({ parsedData }) {
             <div key="eventId" className="event-teams" data-testid="playing-teams-id">
               <p>
                 {`TEAMS: ${eventTeams}` || `TEAMS: ${parsedData.events[0].name}`}
-                {/* {eventTeams} */}
               </p>
             </div>
           </div>
@@ -103,7 +99,6 @@ export default function GetEvent({ parsedData }) {
             <div key="marketId" className="event-market" data-testid="event-market-id">
               <p>
                 {`BET: ${eventBet}` || `BET: ${parsedData.events[0].markets}`}
-                {/* {eventBet} */}
               </p>
             </div>
           </div>
@@ -111,7 +106,6 @@ export default function GetEvent({ parsedData }) {
             <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
               <p>
                 {`OUTCOME: ${eventOutcome}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
-                {/* {eventOutcome} */}
               </p>
             </div>
           </div>
