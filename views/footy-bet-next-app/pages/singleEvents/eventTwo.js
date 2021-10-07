@@ -15,32 +15,32 @@ export default function GetEvent({ parsedData }) {
       ws.send(
         JSON.stringify({
           type: 'subscribe',
-          keys: ['e.21249934'],
+          keys: ['e.21249939'],
           clearSubscription: false,
           type: 'getEvent',
-          id: 21249934,
+          id: 21249939,
         }),
       );
       ws.send(
         JSON.stringify({
           type: 'subscribe',
-          keys: ['m.93648663'],
+          keys: ['m.93649849'],
           type: 'getMarket',
-          id: 93648663,
+          id: 93649849,
         }),
       );
       ws.send(
         JSON.stringify({
           type: 'subscribe',
-          keys: ['o.367526530'],
+          keys: ['o.367530501'],
           type: 'getOutcome',
-          id: 367526530,
+          id: 367530501,
         }),
       );
     };
 
     function handleMessage(event) {
-      console.log('Handling Single Event message');
+      console.log('Handling Single Event NO-2 message');
       setLoading(true);
       const parsedSocketData = JSON.parse(event.data);
       // console.log(parsedData);
@@ -57,23 +57,24 @@ export default function GetEvent({ parsedData }) {
 
   const eventTime = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.startTime.toString();
+    return dataObj.data.startTime.toString().split(',')
   });
-  console.log(eventTime[1]);
+  console.log(eventTime);
 
   const eventTeams = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.name.toString();
+    return dataObj.data.name.toString().replace(/,/g, ' ');
   });
   const eventBet = socketData.map((dataObj) => {
     if (dataObj.type !== 'MARKET_DATA') return null;
-    return dataObj.data.name.toString();
+    return dataObj.data.name.toString().replace(/,/g, ' ');
   });
+  console.log(eventBet);
   const eventOutcome = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.name.toString();
   });
-  console.log(eventOutcome[3]);
+  console.log(eventOutcome);
 
   return (
     <>

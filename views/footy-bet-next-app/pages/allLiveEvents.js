@@ -52,7 +52,7 @@ export default function GetLiveEvents() {
             return (
               <div key="eventId">
                 <div>
-                  <Link href="./allLiveEvents">{eventObj.data[0].name}</Link>
+                  <Link href="./singleEvents/eventTwo"><a>{eventObj.data[0].name}</a></Link>
                 </div>
                 <div>
                   <Link href="./allLiveEvents"><a>{eventObj.data[1].name}</a></Link>
