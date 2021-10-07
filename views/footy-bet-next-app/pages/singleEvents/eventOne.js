@@ -1,7 +1,7 @@
 /* eslint-disable no-dupe-keys */
 import { useState, useEffect } from 'react';
-import socketConnection from './api/apiCalls/connection';
-import styles from '../styles/FootyEvent.module.css';
+import socketConnection from '../api/apiCalls/connection';
+import styles from '../../styles/FootyEvent.module.css';
 
 const ws = socketConnection();
 
