@@ -8,7 +8,6 @@ const ws = socketConnection();
 export default function GetLiveEvents() {
   const [isLoading, setLoading] = useState(false);
   const [socketData, setSocketData] = useState([]);
-  const [match, setMatch] = useState([]);
 
   useEffect(() => {
     ws.onopen = () => {

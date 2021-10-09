@@ -83,7 +83,9 @@ export default function GetEvent({ parsedData }) {
           <h1 className={styles.hone}>Football</h1>
           <div className={styles.titlebox}>
             <div key="loading-key">
-              {isLoading && <div className="loading">Not Connected... Please Refresh</div>}
+              {isLoading && (
+              <div className="loading">Not Connected... Please Refresh</div>
+              )}
             </div>
           </div>
           <div className={styles.titlebox}>
@@ -117,15 +119,3 @@ export default function GetEvent({ parsedData }) {
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const response = await fetch(
-    'http://localhost:8888/football/live?primaryMarkets=true&outComes=true',
-  );
-  const parsedData = await response.json();
-  return {
-    props: {
-      parsedData,
-    },
-  };
-};

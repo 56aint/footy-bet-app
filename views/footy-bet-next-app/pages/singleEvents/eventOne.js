@@ -7,8 +7,8 @@ const ws = socketConnection();
 
 export default function GetEvent({ parsedData }) {
   // console.log(parsedData);
-  const [isLoading, setLoading] = useState(false);
   const [socketData, setSocketData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
     ws.onopen = () => {
@@ -41,7 +41,7 @@ export default function GetEvent({ parsedData }) {
 
     function handleMessage(event) {
       console.log('Handling Single Event message');
-      setLoading(true);
+      // setLoading(true);
       const parsedSocketData = JSON.parse(event.data);
       // console.log(parsedData);
       setSocketData((currentSocketData) => {
@@ -70,10 +70,12 @@ export default function GetEvent({ parsedData }) {
     return dataObj.data.name.toString();
   });
   const eventOutcome = socketData.map((dataObj) => {
-    if (dataObj.type !== 'OUTCOME_DATA') return null;
-    return dataObj.data.name.toString();
+    if (dataObj.type !== 'OUTCOME_DATA') {
+      return null;
+    } if (dataObj.data.name) return dataObj.data.name.toString();
   });
-  console.log(eventOutcome[3]);
+  console.log(`EVENT-OUTCOME IS THIS ${eventOutcome}`);
+  console.log(`EVENT-OUTCOME 4 ${eventOutcome[3]}`);
 
   return (
     <>
@@ -82,35 +84,57 @@ export default function GetEvent({ parsedData }) {
           <h1 className={styles.hone}>Football</h1>
           <div className={styles.titlebox}>
             <div key="loading-key">
-              {isLoading && <div className="loading">Not Connected... Please Refresh</div>}
+              {isLoading && (
+                <div className={styles.loading}>
+                  <div className={styles.spinner1} />
+                  <div className={styles.spinner2} />
+                </div>
+              )}
             </div>
           </div>
-          <div className={styles.titlebox}>
-            <div key="eventId" className="event-time" data-testid="event-time-id">
-              <p>{`DATE: ${eventTime[1]}` || `DATE: ${parsedData.events[0].startTime}`}</p>
+          {/* <div className={styles.titlebox}>
+            <div key="loading-key">
+              {!socketData && (
+                <div className={styles.loading}>
+                  <div className={styles.spinner1} />
+                  <div className={styles.spinner2} />
+                </div>
+              )}
             </div>
+          </div> */}
+          <div>
+            {socketData && (
+              <>
+                <div className={styles.titlebox}>
+                  <div key="eventId" className="event-time" data-testid="event-time-id">
+                    <p>{`DATE: ${eventTime[1]}` || `DATE: ${parsedData.events[0].startTime}`}</p>
+                  </div>
+                </div>
+                <div className={styles.titlebox}>
+                  <div key="eventId" className="event-teams" data-testid="playing-teams-id">
+                    <p>
+                      {`TEAMS: ${eventTeams[1]}` || `TEAMS: ${parsedData.events[0].name}`}
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.titlebox}>
+                  <div key="marketId" className="event-market" data-testid="event-market-id">
+                    <p>
+                      {`BET: ${eventBet[2]}` || `BET: ${parsedData.events[0].markets}`}
+                    </p>
+                  </div>
+                </div>
+                <div className={styles.titlebox}>
+                  <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
+                    <p>
+                      {`OUTCOME: ${eventOutcome[3]}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
+                    </p>
+                  </div>
+                </div>
+              </>
+            )}
           </div>
-          <div className={styles.titlebox}>
-            <div key="eventId" className="event-teams" data-testid="playing-teams-id">
-              <p>
-                {`TEAMS: ${eventTeams[1]}` || `TEAMS: ${parsedData.events[0].name}`}
-              </p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="marketId" className="event-market" data-testid="event-market-id">
-              <p>
-                {`BET: ${eventBet[2]}` || `BET: ${parsedData.events[0].markets}`}
-              </p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
-              <p>
-                {`OUTCOME: ${eventOutcome[3]}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
-              </p>
-            </div>
-          </div>
+
         </div>
       </div>
     </>

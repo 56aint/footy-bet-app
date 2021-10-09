@@ -1,5 +1,7 @@
-import { useEffect } from 'react';
+/* eslint-disable no-alert */
+import { useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
+// import { useLocation } from 'react-router-dom';
 import Head from 'next/head';
 import Link from 'next/link';
 // import GetEvent from "../pages/[event]";
@@ -7,36 +9,17 @@ import navStyles from '../styles/Nav.module.css';
 
 export default function NavBar() {
   const router = useRouter();
+  // const location = useLocation();
+  const [load, setLoad] = useState(false);
+
   useEffect(() => {
-    /* window.onerror = function () {
-      setTimeout(() => {
-        location.reload();
-      }, 100);
-    }; */
-    /* setTimeout(
-      window.location.reload.bind(window.location),
-      250); */
-
-  /* window.onerror = function (errorMsg, url, lineNumber) {
-    alert(`Error: ${errorMsg} Script: ${url} Line: ${lineNumber}`);
-  }; */
-  }, []);
-
-  /* function showEvent() {
-  router.push(GetEvent);
-}  */
-
-  /* function handleClick(event, path) {
-  // event.preventDefault();
-    setLoading(true);
-    if (path === '/event') {
-      router.push(path).reload(window.location);
-    }
-  } */
-
-  /* useEffect(() => {
-    setTimeout(() => { return setLoading(false); }, 1000);
-  }, []); */
+    window.onerror = function onError() {
+      if (load) {
+        window.location.reload(true);
+        setLoad(false);
+      }
+    };
+  }, [load]);
 
   return (
     <>
@@ -54,24 +37,30 @@ export default function NavBar() {
             <Link
               className="navbar-item-myTeam"
               /* as="/event" */
-              href="/singleEvents/eventOne" /* onClick={GetEvent} */ /* onClick={() => window.location.reload()}
-              onClick={() => {GetEvent(); router.push("/event")}}
-              onClick={showEvent}
-               <a onClick={() => { handleClick; }} role="link" tabIndex={0}>My Team</a> */
+              href="/singleEvents/eventOne"
             >
-              <a onClick={() => { router.push('/singleEvents/eventOne').reload(window.location); }} role="link" tabIndex={0}>My Team</a>
+              <a onClick={() => { reload(window.location); }}>My Team</a>
             </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/allLiveEvents">
-              <a onClick={() => { router.push('/allLiveEvents').reload(window.location); }} role="link" tabIndex={0}>Live Football</a>
+              <a onClick={() => { reload(window.location); }}>Live Football</a>
+
             </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">Market</Link>
+            <Link href="/">
+              <a>
+                Market
+              </a>
+            </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">Outcomes</Link>
+            <Link href="/">
+              <a>
+                Outcomes
+              </a>
+            </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/">Market Updates</Link>
