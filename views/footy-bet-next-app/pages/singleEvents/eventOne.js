@@ -12,7 +12,6 @@ export default function GetEvent({ parsedData }) {
 
   useEffect(() => {
     const ws = socketConnection();
-    // ws.onopen = () => {
     ws.open()
       .then(() => {
         return [
@@ -37,9 +36,10 @@ export default function GetEvent({ parsedData }) {
           }),
         ];
       })
-      .then((response) => { return console.log('Promise message response', response); });
+      .then((response) => { return console.log('Promise message response', response); })
+      .catch((err) => { return console.log('Promise message error', err); });
+
     ws.onMessage.addListener((response) => {
-      // console.log('Message response', response.data)
       const parsedSocketData = JSON.parse(response.data);
       setSocketData((currentSocketData) => {
         return [...currentSocketData, parsedSocketData];
@@ -47,79 +47,12 @@ export default function GetEvent({ parsedData }) {
       console.log('parsedSocketData', parsedSocketData);
       setLoading(false);
     });
-    /* .then(() => {
-        ws.onMessage.addListener((event) => {
-          const parsedSocketData = JSON.parse(event.data);
-          console.log('data', parsedSocketData);
-          setSocketData(parsedSocketData);
-          setLoading(false);
-        });
-      })
-      .then(() => { return ws.close(); })
-      .then(() => { return console.log('Promise message closed'); })
-      .catch((err) => { return console.log(err); }); */
-    /* ws.sendRequest(
-        JSON.stringify({
-          type: 'subscribe',
-          keys: ['e.21249934'],
-          clearSubscription: false,
-          type: 'getEvent',
-          id: 21249934,
-        }),
-      ); */
-    /* ws.send(
-        JSON.stringify({
-          type: 'subscribe',
-          keys: ['m.93648663'],
-          type: 'getMarket',
-          id: 93648663,
-        }),
-      );
-      ws.send(
-        JSON.stringify({
-          type: 'subscribe',
-          keys: ['o.367526530'],
-          type: 'getOutcome',
-          id: 367526530,
-        }),
-      ); */
-    // };
-
-    /* function handleMessage(event) {
-      console.log('Handling Single Event message');
-      // setLoading(true);
-      const parsedSocketData = JSON.parse(event.data);
-      console.log(parsedData);
-      setSocketData((currentSocketData) => {
-        return [...currentSocketData, parsedSocketData];
-      });
-      setLoading(false);
-    } */
-
-    /* ws.addListener('message', handleMessage);
-
-     function handleMessage(event) {
-      console.log('Handling Single Event message');
-      // setLoading(true);
-      const parsedSocketData = JSON.parse(event.data);
-      // console.log(parsedData);
-      setSocketData((currentSocketData) => {
-        return [...currentSocketData, parsedSocketData];
-      });
-      setLoading(false);
-    } */
-    /* ws.addEventListener('message', handleMessage);
-    return () => {
-      return ws.removeEventListener('message', handleMessage);
-    };  */
   }, []);
-
 
   const eventTime = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.startTime.toString();
   });
-  // console.log(eventTime[1]);
 
   const eventTeams = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
@@ -129,25 +62,11 @@ export default function GetEvent({ parsedData }) {
     if (dataObj.type !== 'MARKET_DATA') return null;
     return dataObj.data.name.toString();
   });
-  /* const eventOutcome = socketData.map((dataObj) => {
-    if (dataObj.type !== 'OUTCOME_DATA') {
-      return 'not OUTCOME_DATA, Loading';
-    } if (dataObj.data.name === undefined) {
-      return 'undefined, Loading';
-    } if (dataObj.data.name === null) {
-      return 'null, Loading';
-    }
-    return dataObj.data.name.toString();
-  });
-  console.log(`EVENT-OUTCOME IS THIS ${eventOutcome}`);
-  // console.log(`EVENT-OUTCOME 4 ${eventOutcome[3]}`); */
 
   const eventOutcome = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.name.toString();
   });
-  // console.log(`EVENT-OUTCOME IS THIS ${eventOutcome}`)
-  // console.log(`EVENT-OUTCOME 4 ${eventOutcome[3]}`);
 
   return (
     <>

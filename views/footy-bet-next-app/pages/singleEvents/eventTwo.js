@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react';
 import socketConnection from '../api/apiCalls/connection';
 import styles from '../../styles/FootyEvent.module.css';
 
-export default function GetEvent({ parsedData }) {
-  // console.log(parsedData);
+export default function GetEvent() {
   const [isLoading, setLoading] = useState(true);
   const [socketData, setSocketData] = useState([]);
 
@@ -37,26 +36,13 @@ export default function GetEvent({ parsedData }) {
       })
       .then((response) => { return console.log('Promise message response', response); });
 
-    // ws.onMessage.addListener((response) => {
-      // console.log('Message response', response.data)
-      // const parsedSocketData = JSON.parse(response.data);
-      /* setSocketData((currentSocketData) => {
-        return [...currentSocketData, parsedSocketData];
-      }); */
-      // console.log('parsedSocketData', parsedSocketData);
-      // setLoading(false);
-    // });
-
-    
     function handleMessage(response) {
-      console.log('Handling Single Event NO-2 message');
-      // setLoading(true);
+      // console.log('Handling Single Event NO-2 message');
       const parsedSocketData = JSON.parse(response.data);
-      // console.log(parsedData);
       setSocketData((currentSocketData) => {
         return [...currentSocketData, parsedSocketData];
       });
-      console.log('parsedSocketData', parsedSocketData);
+      // console.log('parsedSocketData', parsedSocketData);
       setLoading(false);
     }
     ws.onMessage.addListener(handleMessage);
@@ -67,9 +53,8 @@ export default function GetEvent({ parsedData }) {
 
   const eventTime = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.startTime.toString().split(',');
+    return dataObj.data.startTime.toString();
   });
-  console.log(eventTime);
 
   const eventTeams = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
@@ -79,12 +64,10 @@ export default function GetEvent({ parsedData }) {
     if (dataObj.type !== 'MARKET_DATA') return null;
     return dataObj.data.name.toString().replace(/,/g, ' ');
   });
-  console.log(eventBet);
   const eventOutcome = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.name.toString();
   });
-  console.log(eventOutcome);
 
   return (
     <>
@@ -103,27 +86,27 @@ export default function GetEvent({ parsedData }) {
           </div>
           <div className={styles.titlebox}>
             <div key="eventId" className="event-time" data-testid="event-time-id">
-              <p>{`DATE: ${eventTime[1]}` || `DATE: ${parsedData.events[0].startTime}`}</p>
+              <p>{`DATE: ${eventTime[1]}`}</p>
             </div>
           </div>
           <div className={styles.titlebox}>
             <div key="eventId" className="event-teams" data-testid="playing-teams-id">
               <p>
-                {`TEAMS: ${eventTeams[1]}` || `TEAMS: ${parsedData.events[0].name}`}
+                {`TEAMS: ${eventTeams[1]}`}
               </p>
             </div>
           </div>
           <div className={styles.titlebox}>
             <div key="marketId" className="event-market" data-testid="event-market-id">
               <p>
-                {`BET: ${eventBet[2]}` || `BET: ${parsedData.events[0].markets}`}
+                {`BET: ${eventBet[2]}`}
               </p>
             </div>
           </div>
           <div className={styles.titlebox}>
             <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
               <p>
-                {`OUTCOME: ${eventOutcome[3]}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
+                {`OUTCOME: ${eventOutcome[3]}`}
               </p>
             </div>
           </div>

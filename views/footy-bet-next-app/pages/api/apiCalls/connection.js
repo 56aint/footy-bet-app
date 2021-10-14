@@ -14,48 +14,15 @@ export default function socketConnection() {
     extractRequestId: (data) => { return data && data.id; }, // extract requestId from message */
   });
 
-
   ws.open()
     .then(() => { return console.log('connected'); })
-  /* ws.onMessage.addListener((message) => {
-    console.log(message.data);
-  });
-  ws.onClose.addListener(() => {
-    console.log('disconnected');
-  });
+    .catch((err) => { return console.log('error', err); });
   ws.onError.addListener((error) => {
-    console.log(error);
-  }); */
-  /*
-
-
-
-    .then(() => {
-      return ws.onmessage = function (event) {
-        console.log('This is the received data:', event.data);
-      }
-    })
-    .then(() => {
-      return ws.onclose = function (event) {
-        console.log('connection closed');
-      };
-    })
-    .catch((err) => {
-      console.log('error', err);
-    });
-
-    */
-  /* (async () => {
-    try {
-      await ws.open();
-      console.log('connected');
-    }
-    catch (error) {
-      console.log('error', error);
-    } finally {
-      await ws.close();
-    }
-  })(); */
+    console.log('Error', error);
+  });
+  ws.onClose.addListener((close) => {
+    console.log('disconnected', close);
+  });
 
   return ws;
 }

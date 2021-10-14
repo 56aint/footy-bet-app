@@ -23,13 +23,10 @@ export default function GetLiveEvents() {
 
     function handleMessage(response) {
       console.log('Handling Events Message');
-      // setLoading(true);
       const parsedSocketData = JSON.parse(response.data);
-      // console.log(parsedData);
       setSocketData((currentSocketData) => {
         return [...currentSocketData, parsedSocketData];
       });
-      console.log('parsedSocketData', parsedSocketData);
       setLoading(false);
     }
     ws.onMessage.addListener(handleMessage);
