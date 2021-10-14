@@ -3,61 +3,71 @@ import { useState, useEffect } from 'react';
 import socketConnection from '../api/apiCalls/connection';
 import styles from '../../styles/FootyEvent.module.css';
 
-const ws = socketConnection();
-
 export default function GetEvent({ parsedData }) {
   // console.log(parsedData);
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [socketData, setSocketData] = useState([]);
 
   useEffect(() => {
-    ws.onopen = () => {
-      ws.send(
-        JSON.stringify({
-          type: 'subscribe',
-          keys: ['e.21249939'],
-          clearSubscription: false,
-          type: 'getEvent',
-          id: 21249939,
-        }),
-      );
-      ws.send(
-        JSON.stringify({
-          type: 'subscribe',
-          keys: ['m.93649849'],
-          type: 'getMarket',
-          id: 93649849,
-        }),
-      );
-      ws.send(
-        JSON.stringify({
-          type: 'subscribe',
-          keys: ['o.367530501'],
-          type: 'getOutcome',
-          id: 367530501,
-        }),
-      );
-    };
+    const ws = socketConnection();
 
-    function handleMessage(event) {
+    ws.open()
+      .then(() => {
+        return [
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['e.21249939'],
+            clearSubscription: false,
+            type: 'getEvent',
+            id: 21249939,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['m.93649849'],
+            type: 'getMarket',
+            id: 93649849,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367530501'],
+            type: 'getOutcome',
+            id: 367530501,
+          }),
+        ];
+      })
+      .then((response) => { return console.log('Promise message response', response); });
+
+    // ws.onMessage.addListener((response) => {
+      // console.log('Message response', response.data)
+      // const parsedSocketData = JSON.parse(response.data);
+      /* setSocketData((currentSocketData) => {
+        return [...currentSocketData, parsedSocketData];
+      }); */
+      // console.log('parsedSocketData', parsedSocketData);
+      // setLoading(false);
+    // });
+
+    
+    function handleMessage(response) {
       console.log('Handling Single Event NO-2 message');
-      setLoading(true);
-      const parsedSocketData = JSON.parse(event.data);
+      // setLoading(true);
+      const parsedSocketData = JSON.parse(response.data);
       // console.log(parsedData);
       setSocketData((currentSocketData) => {
         return [...currentSocketData, parsedSocketData];
       });
+      console.log('parsedSocketData', parsedSocketData);
       setLoading(false);
     }
-    ws.addEventListener('message', handleMessage);
+    ws.onMessage.addListener(handleMessage);
     return () => {
-      return ws.removeEventListener('message', handleMessage);
+      return ws.removeAllListeners();
     };
   }, []);
 
   const eventTime = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.startTime.toString().split(',')
+    return dataObj.data.startTime.toString().split(',');
   });
   console.log(eventTime);
 
@@ -84,7 +94,10 @@ export default function GetEvent({ parsedData }) {
           <div className={styles.titlebox}>
             <div key="loading-key">
               {isLoading && (
-              <div className="loading">Not Connected... Please Refresh</div>
+              <div className={styles.loading}>
+                <div className={styles.spinner1} />
+                <div className={styles.spinner2} />
+              </div>
               )}
             </div>
           </div>

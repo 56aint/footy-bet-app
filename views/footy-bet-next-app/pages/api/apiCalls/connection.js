@@ -1,49 +1,62 @@
-/* let openedSocket = null; */
-/* export const isBrowser = typeof window !== "undefined"; */
+import WebSocketAsPromised from 'websocket-as-promised';
 
 const W3CWebSocket = require('websocket').w3cwebsocket;
-// import WebSocketAsPromised from 'websocket-as-promised';
-
 
 export default function socketConnection() {
-  /* const ws = isBrowser? new WebSocket('ws://localhost:8889') : null; */
-  // const ws = new WebSocket('ws://localhost:8889');
-
-  const ws = new W3CWebSocket('ws://localhost:8889');
-
-
-  ws.addEventListener('open', () => {
-    console.log('Connection opened!');
+  const ws = new WebSocketAsPromised('ws://localhost:8889', {
+    createWebSocket: (url) => { return new W3CWebSocket(url); },
+    extractMessageData: (event) => { return event; }, // default
+    packMessage: (data) => { return JSON.stringify(data); }, // send stringified data
+    unpackMessage: (data) => { return (data); }, // receive parsed data
+    attachRequestId: (data, requestId) => {
+      return { id: requestId, ...data };
+    }, // attach requestId to message as `id` field
+    extractRequestId: (data) => { return data && data.id; }, // extract requestId from message */
   });
 
-  ws.addEventListener('error', (event) => {
-    console.log('WebSocket error: ', event);
-  }); // logs error to console
 
-  ws.onopen = function () {
-    console.log('connected to the server');
-  }; // logs connection to console
-  // ws.addEventListener("message", (e) => console.log(e.data)); // logs all data to console
+  ws.open()
+    .then(() => { return console.log('connected'); })
+  /* ws.onMessage.addListener((message) => {
+    console.log(message.data);
+  });
+  ws.onClose.addListener(() => {
+    console.log('disconnected');
+  });
+  ws.onError.addListener((error) => {
+    console.log(error);
+  }); */
+  /*
 
-  ws.onmessage = function (message) {
-    console.log('This is the received data:', message.data);
-  }; // logs received data to console
 
-  ws.onclose = function(event) {
-    if (event.wasClean) {
-      alert(`[close] Connection closed cleanly, code=${event.code} reason=${event.reason}`);
-    } else {
-      // e.g. server process killed or network down
-      alert('[close] Connection died');
+
+    .then(() => {
+      return ws.onmessage = function (event) {
+        console.log('This is the received data:', event.data);
+      }
+    })
+    .then(() => {
+      return ws.onclose = function (event) {
+        console.log('connection closed');
+      };
+    })
+    .catch((err) => {
+      console.log('error', err);
+    });
+
+    */
+  /* (async () => {
+    try {
+      await ws.open();
+      console.log('connected');
     }
-    setTimeout(() => {
-      socketConnection();
-    }, 1000);
-  }; // logs connection closed cleanly to the console
+    catch (error) {
+      console.log('error', error);
+    } finally {
+      await ws.close();
+    }
+  })(); */
 
-  ws.onerror = function(error) {
-    alert(`[error] ${error.message}`);
-  };
   return ws;
 }
 

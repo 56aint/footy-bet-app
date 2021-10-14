@@ -3,36 +3,38 @@ import Link from 'next/link';
 import socketConnection from './api/apiCalls/connection';
 import styles from '../styles/FootyEvent.module.css';
 
-const ws = socketConnection();
-
 export default function GetLiveEvents() {
-  const [isLoading, setLoading] = useState(false);
+  const [isLoading, setLoading] = useState(true);
   const [socketData, setSocketData] = useState([]);
 
   useEffect(() => {
-    ws.onopen = () => {
-      ws.send(
-        JSON.stringify({
-          type: 'getLiveEvents',
-          primaryMarkets: true,
-        }),
-      );
-    };
+    const ws = socketConnection();
 
-    const handleMessage = (events) => {
+    ws.open()
+      .then(() => {
+        return [
+          ws.sendRequest({
+            type: 'getLiveEvents',
+            primaryMarkets: true,
+          }),
+        ];
+      })
+      .then((response) => { return console.log('Promise message response', response); });
+
+    function handleMessage(response) {
       console.log('Handling Events Message');
-      setLoading(true);
-      const parsedEventsData = JSON.parse(events.data);
-      console.log(parsedEventsData);
-      console.log(parsedEventsData.data[0]);
+      // setLoading(true);
+      const parsedSocketData = JSON.parse(response.data);
+      // console.log(parsedData);
       setSocketData((currentSocketData) => {
-        return [...currentSocketData, parsedEventsData];
+        return [...currentSocketData, parsedSocketData];
       });
+      console.log('parsedSocketData', parsedSocketData);
       setLoading(false);
-    };
-    ws.addEventListener('message', handleMessage);
+    }
+    ws.onMessage.addListener(handleMessage);
     return () => {
-      return ws.removeEventListener('message', handleMessage);
+      return ws.removeAllListeners();
     };
   }, []);
 
@@ -43,7 +45,12 @@ export default function GetLiveEvents() {
           <h1 className={styles.hone}>Live Football Fixtures</h1>
           <div className={styles.titlebox}>
             <div key="loading-key">
-              {isLoading && <div className="loading">Loading...</div>}
+              {isLoading && (
+              <div className={styles.loading}>
+                <div className={styles.spinner1} />
+                <div className={styles.spinner2} />
+              </div>
+              )}
             </div>
           </div>
           {socketData.map((eventObj) => {

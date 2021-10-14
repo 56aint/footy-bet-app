@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import socketConnection from '../api/apiCalls/connection';
 import styles from '../../styles/FootyEvent.module.css';
 
-const ws = socketConnection();
+// const ws = socketConnection();
 
 export default function GetEvent({ parsedData }) {
   // console.log(parsedData);
@@ -11,8 +11,54 @@ export default function GetEvent({ parsedData }) {
   const [isLoading, setLoading] = useState(true);
 
   useEffect(() => {
-    ws.onopen = () => {
-      ws.send(
+    const ws = socketConnection();
+    // ws.onopen = () => {
+    ws.open()
+      .then(() => {
+        return [
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['e.21249934'],
+            clearSubscription: false,
+            type: 'getEvent',
+            id: 21249934,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['m.93648663'],
+            type: 'getMarket',
+            id: 93648663,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367526530'],
+            type: 'getOutcome',
+            id: 367526530,
+          }),
+        ];
+      })
+      .then((response) => { return console.log('Promise message response', response); });
+    ws.onMessage.addListener((response) => {
+      // console.log('Message response', response.data)
+      const parsedSocketData = JSON.parse(response.data);
+      setSocketData((currentSocketData) => {
+        return [...currentSocketData, parsedSocketData];
+      });
+      console.log('parsedSocketData', parsedSocketData);
+      setLoading(false);
+    });
+    /* .then(() => {
+        ws.onMessage.addListener((event) => {
+          const parsedSocketData = JSON.parse(event.data);
+          console.log('data', parsedSocketData);
+          setSocketData(parsedSocketData);
+          setLoading(false);
+        });
+      })
+      .then(() => { return ws.close(); })
+      .then(() => { return console.log('Promise message closed'); })
+      .catch((err) => { return console.log(err); }); */
+    /* ws.sendRequest(
         JSON.stringify({
           type: 'subscribe',
           keys: ['e.21249934'],
@@ -20,8 +66,8 @@ export default function GetEvent({ parsedData }) {
           type: 'getEvent',
           id: 21249934,
         }),
-      );
-      ws.send(
+      ); */
+    /* ws.send(
         JSON.stringify({
           type: 'subscribe',
           keys: ['m.93648663'],
@@ -36,10 +82,23 @@ export default function GetEvent({ parsedData }) {
           type: 'getOutcome',
           id: 367526530,
         }),
-      );
-    };
+      ); */
+    // };
 
-    function handleMessage(event) {
+    /* function handleMessage(event) {
+      console.log('Handling Single Event message');
+      // setLoading(true);
+      const parsedSocketData = JSON.parse(event.data);
+      console.log(parsedData);
+      setSocketData((currentSocketData) => {
+        return [...currentSocketData, parsedSocketData];
+      });
+      setLoading(false);
+    } */
+
+    /* ws.addListener('message', handleMessage);
+
+     function handleMessage(event) {
       console.log('Handling Single Event message');
       // setLoading(true);
       const parsedSocketData = JSON.parse(event.data);
@@ -48,18 +107,19 @@ export default function GetEvent({ parsedData }) {
         return [...currentSocketData, parsedSocketData];
       });
       setLoading(false);
-    }
-    ws.addEventListener('message', handleMessage);
+    } */
+    /* ws.addEventListener('message', handleMessage);
     return () => {
       return ws.removeEventListener('message', handleMessage);
-    };
+    };  */
   }, []);
+
 
   const eventTime = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.startTime.toString();
   });
-  console.log(eventTime[1]);
+  // console.log(eventTime[1]);
 
   const eventTeams = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
@@ -69,13 +129,25 @@ export default function GetEvent({ parsedData }) {
     if (dataObj.type !== 'MARKET_DATA') return null;
     return dataObj.data.name.toString();
   });
-  const eventOutcome = socketData.map((dataObj) => {
+  /* const eventOutcome = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') {
-      return null;
-    } if (dataObj.data.name) return dataObj.data.name.toString();
+      return 'not OUTCOME_DATA, Loading';
+    } if (dataObj.data.name === undefined) {
+      return 'undefined, Loading';
+    } if (dataObj.data.name === null) {
+      return 'null, Loading';
+    }
+    return dataObj.data.name.toString();
   });
   console.log(`EVENT-OUTCOME IS THIS ${eventOutcome}`);
-  console.log(`EVENT-OUTCOME 4 ${eventOutcome[3]}`);
+  // console.log(`EVENT-OUTCOME 4 ${eventOutcome[3]}`); */
+
+  const eventOutcome = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    return dataObj.data.name.toString();
+  });
+  // console.log(`EVENT-OUTCOME IS THIS ${eventOutcome}`)
+  // console.log(`EVENT-OUTCOME 4 ${eventOutcome[3]}`);
 
   return (
     <>
@@ -92,46 +164,56 @@ export default function GetEvent({ parsedData }) {
               )}
             </div>
           </div>
-          {/* <div className={styles.titlebox}>
+          <div className={styles.titlebox}>
             <div key="loading-key">
-              {!socketData && (
+              {socketData === undefined && (
+              <div className={styles.loading}>
+                <div className={styles.spinner1} />
+                <div className={styles.spinner2} />
+              </div>
+              )}
+            </div>
+          </div>
+          <div className={styles.titlebox}>
+            <div key="load-key">
+              {(socketData === null) && (
                 <div className={styles.loading}>
                   <div className={styles.spinner1} />
                   <div className={styles.spinner2} />
                 </div>
               )}
             </div>
-          </div> */}
+          </div>
           <div>
             {socketData && (
-              <>
-                <div className={styles.titlebox}>
-                  <div key="eventId" className="event-time" data-testid="event-time-id">
-                    <p>{`DATE: ${eventTime[1]}` || `DATE: ${parsedData.events[0].startTime}`}</p>
-                  </div>
+            <>
+              <div className={styles.titlebox}>
+                <div key="eventId" className="event-time" data-testid="event-time-id">
+                  <p>{`DATE: ${eventTime[1]}` || `DATE: ${parsedData.events[0].startTime}`}</p>
                 </div>
-                <div className={styles.titlebox}>
-                  <div key="eventId" className="event-teams" data-testid="playing-teams-id">
-                    <p>
-                      {`TEAMS: ${eventTeams[1]}` || `TEAMS: ${parsedData.events[0].name}`}
-                    </p>
-                  </div>
+              </div>
+              <div className={styles.titlebox}>
+                <div key="eventId" className="event-teams" data-testid="playing-teams-id">
+                  <p>
+                    {`TEAMS: ${eventTeams[1]}` || `TEAMS: ${parsedData.events[0].name}`}
+                  </p>
                 </div>
-                <div className={styles.titlebox}>
-                  <div key="marketId" className="event-market" data-testid="event-market-id">
-                    <p>
-                      {`BET: ${eventBet[2]}` || `BET: ${parsedData.events[0].markets}`}
-                    </p>
-                  </div>
+              </div>
+              <div className={styles.titlebox}>
+                <div key="marketId" className="event-market" data-testid="event-market-id">
+                  <p>
+                    {`BET: ${eventBet[2]}` || `BET: ${parsedData.events[0].markets}`}
+                  </p>
                 </div>
-                <div className={styles.titlebox}>
-                  <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
-                    <p>
-                      {`OUTCOME: ${eventOutcome[3]}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
-                    </p>
-                  </div>
+              </div>
+              <div className={styles.titlebox}>
+                <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
+                  <p>
+                    {`OUTCOME: ${eventOutcome[3]}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
+                  </p>
                 </div>
-              </>
+              </div>
+            </>
             )}
           </div>
 
