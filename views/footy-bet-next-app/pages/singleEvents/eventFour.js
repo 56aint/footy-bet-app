@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 import { useState, useEffect } from 'react';
 import socketConnection from '../api/apiCalls/connection';
 import styles from '../../styles/FootyEvent.module.css';
@@ -18,19 +17,19 @@ export default function GetEvent() {
             keys: ['e.21249939'],
             clearSubscription: false,
             type: 'getEvent',
-            id: 21249939,
+            id: 21249945,
           }),
           ws.sendRequest({
             type: 'subscribe',
             keys: ['m.93649849'],
             type: 'getMarket',
-            id: 93649849,
+            id: 93650155,
           }),
           ws.sendRequest({
             type: 'subscribe',
             keys: ['o.367530501'],
             type: 'getOutcome',
-            id: 367530501,
+            id: 367531524,
           }),
         ];
       })

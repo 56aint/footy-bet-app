@@ -16,13 +16,35 @@ export default function socketConnection() {
 
   ws.open()
     .then(() => { return console.log('connected'); })
+
     .catch((err) => { return console.log('error', err); });
+
+  ws.onClose.addListener((event) => {
+    if (event.wasClean) {
+      alert(`Connection closed cleanly, code=${event.code}reason=${event.reason}`);
+    } else {
+      alert('[close] Connection died');
+    }
+  });
   ws.onError.addListener((error) => {
+    console.log(`[error] ${error.message}`);
+  });
+  /* ws.onClose.addListener((event) => {
+    if (event.code === 1000) {
+      console.log('closed');
+    } else {
+      console.log('error', event);
+    }
+  }); */
+  /*  ws.onError.addListener((error) => {
     console.log('Error', error);
   });
-  ws.onClose.addListener((close) => {
+  onClose(() => {
+    console.log('closed');
+  }); */
+  /* ws.onClose.addListener((close) => {
     console.log('disconnected', close);
-  });
+  }); */
 
   return ws;
 }

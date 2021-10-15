@@ -14,3 +14,17 @@ a {
 * {
   box-sizing: border-box;
 }
+/* 
+URL, with a keyword fallback 
+cursor {
+  cursor: url(hand.cur), pointer; 
+}
+
+ URL and coordinates, with a keyword fallback 
+ cursor {
+  cursor: url(cursor1.png) 4 12, auto;
+}
+cursor {
+  cursor: url(cursor2.png) 2 2, pointer; 
+}
+ */

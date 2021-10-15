@@ -27,6 +27,7 @@ export default function GetLiveEvents() {
       setSocketData((currentSocketData) => {
         return [...currentSocketData, parsedSocketData];
       });
+      console.log('parsedSocketData', parsedSocketData);
       setLoading(false);
     }
     ws.onMessage.addListener(handleMessage);
@@ -55,58 +56,58 @@ export default function GetLiveEvents() {
             return (
               <div key="eventId">
                 <div>
-                  <Link href="./singleEvents/eventTwo"><a>{eventObj.data[0].name}</a></Link>
+                  <Link href="./singleEvents/eventTwo"><a className={styles.link}>{eventObj.data[0].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[1].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[1].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[2].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[2].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[3].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[3].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[4].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[4].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[5].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[5].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[6].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[6].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[7].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[7].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[8].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[8].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[9].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[9].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[10].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[10].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[11].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[11].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[12].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[12].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[13].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[13].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[14].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[14].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[15].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[16].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[16].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./allLiveEvents"><a>{eventObj.data[17].name}</a></Link>
+                  <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[17].name}</a></Link>
                 </div>
               </div>
             );
