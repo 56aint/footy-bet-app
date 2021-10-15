@@ -17,7 +17,9 @@ export default function socketConnection() {
   ws.open()
     .then(() => { return console.log('connected'); })
 
-    .catch((err) => { return console.log('error', err); });
+    .catch((err) => { 
+      return console.log('error', err); 
+    });
 
   ws.onClose.addListener((event) => {
     if (event.wasClean) {
@@ -25,26 +27,11 @@ export default function socketConnection() {
     } else {
       alert('[close] Connection died');
     }
+    // ws.close();
   });
   ws.onError.addListener((error) => {
-    console.log(`[error] ${error.message}`);
+    alert(`[error] ${error.message}`);
   });
-  /* ws.onClose.addListener((event) => {
-    if (event.code === 1000) {
-      console.log('closed');
-    } else {
-      console.log('error', event);
-    }
-  }); */
-  /*  ws.onError.addListener((error) => {
-    console.log('Error', error);
-  });
-  onClose(() => {
-    console.log('closed');
-  }); */
-  /* ws.onClose.addListener((close) => {
-    console.log('disconnected', close);
-  }); */
 
   return ws;
 }

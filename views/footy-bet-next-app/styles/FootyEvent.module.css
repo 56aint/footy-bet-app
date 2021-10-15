@@ -43,15 +43,16 @@
 .link {
   text-decoration: none;
   color: #eef5ee;
+  font-size: medium;
 }
 .link:hover {
    color: rgb(255, 81, 0)
 }
 .link:visited {
-  color: rgb(255, 255, 255);
+  color: rgb(133, 240, 156);
 }
 .link:active {
-  color: rgb(255, 255, 255);
+  color: rgb(247, 199, 199);
 }
 
 .hone {

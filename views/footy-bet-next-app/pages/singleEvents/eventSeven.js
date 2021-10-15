@@ -1,46 +1,43 @@
-/* eslint-disable no-dupe-keys */
 import { useState, useEffect } from 'react';
 import socketConnection from '../api/apiCalls/connection';
 import styles from '../../styles/FootyEvent.module.css';
 
-// const ws = socketConnection();
-
-export default function GetEvent({ parsedData }) {
-  // console.log(parsedData);
-  const [socketData, setSocketData] = useState([]);
+export default function GetEvent() {
   const [isLoading, setLoading] = useState(true);
+  const [socketData, setSocketData] = useState([]);
 
   useEffect(() => {
     const ws = socketConnection();
+
     ws.open()
       .then(() => {
         return [
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['e.21249934'],
+            keys: ['e.21249939'],
             clearSubscription: false,
             type: 'getEvent',
-            id: 21249934,
+            id: 21250047,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['m.93648663'],
+            keys: ['m.93649849'],
             type: 'getMarket',
-            id: 93648663,
+            id: 93778234,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367526530'],
+            keys: ['o.367530501'],
             type: 'getOutcome',
-            id: 367526530,
+            id: 368087298,
           }),
         ];
       })
       .then((response) => { return console.log('Promise message response', response); })
-      .catch((err) => { return console.log('Promise message error', err); });
+      .catch((error) => { return console.log('Promise message error', error); });
 
     function handleMessage(response) {
-      console.log('Handling Events Message');
+      // console.log('Handling Single Event NO-2 message');
       const parsedSocketData = JSON.parse(response.data);
       setSocketData((currentSocketData) => {
         return [...currentSocketData, parsedSocketData];
@@ -53,7 +50,6 @@ export default function GetEvent({ parsedData }) {
       ws.close();
       return ws.removeAllListeners();
     }; */
-
     return () => {
       ws.onClose.addListener((event) => {
         if (event.wasClean) {
@@ -70,16 +66,15 @@ export default function GetEvent({ parsedData }) {
     };
   }, []);
 
-  const leagueType = socketData.map((dataObj) => {
+  const leagueType = socketData.map((dataObj)=> {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.typeName;
   });
 
-  const leagueName = socketData.map((dataObj) => {
+  const leagueName = socketData.map((dataObj)=> {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.linkedEventTypeName;
   });
-
   const eventTime = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.startTime.toString();
@@ -87,13 +82,12 @@ export default function GetEvent({ parsedData }) {
 
   const eventTeams = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.name.toString();
+    return dataObj.data.name.toString().replace(/,/g, ' ');
   });
   const eventBet = socketData.map((dataObj) => {
     if (dataObj.type !== 'MARKET_DATA') return null;
-    return dataObj.data.name.toString();
+    return dataObj.data.name.toString().replace(/,/g, ' ');
   });
-
   const eventOutcome = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.name.toString();
@@ -104,20 +98,10 @@ export default function GetEvent({ parsedData }) {
       <div className="footyevent" data-testid="footy-event-id">
         <div className={styles.container}>
           <h1 className={styles.hone}>{leagueType}</h1>
-          <h3 className={styles.hone}>{leagueName}</h3>
+          <h3 className={styles.hone}>FA Cup-Qualifications</h3>
           <div className={styles.titlebox}>
             <div key="loading-key">
               {isLoading && (
-                <div className={styles.loading}>
-                  <div className={styles.spinner1} />
-                  <div className={styles.spinner2} />
-                </div>
-              )}
-            </div>
-          </div>
-          {/* <div className={styles.titlebox}>
-            <div key="loading-key">
-              {socketData === undefined && (
               <div className={styles.loading}>
                 <div className={styles.spinner1} />
                 <div className={styles.spinner2} />
@@ -126,62 +110,33 @@ export default function GetEvent({ parsedData }) {
             </div>
           </div>
           <div className={styles.titlebox}>
-            <div key="load-key">
-              {(socketData === null) && (
-                <div className={styles.loading}>
-                  <div className={styles.spinner1} />
-                  <div className={styles.spinner2} />
-                </div>
-              )}
+            <div key="eventId" className="event-time" data-testid="event-time-id">
+              <p>{`DATE: ${eventTime[1]}`}</p>
             </div>
-          </div> */}
-          <div>
-            {socketData && (
-            <>
-              <div className={styles.titlebox}>
-                <div key="eventId" className="event-time" data-testid="event-time-id">
-                  <p>{`DATE: ${eventTime[1]}` || `DATE: ${parsedData.events[0].startTime}`}</p>
-                </div>
-              </div>
-              <div className={styles.titlebox}>
-                <div key="eventId" className="event-teams" data-testid="playing-teams-id">
-                  <p>
-                    {`TEAMS: ${eventTeams[1]}` || `TEAMS: ${parsedData.events[0].name}`}
-                  </p>
-                </div>
-              </div>
-              <div className={styles.titlebox}>
-                <div key="marketId" className="event-market" data-testid="event-market-id">
-                  <p>
-                    {`BET: ${eventBet[2]}` || `BET: ${parsedData.events[0].markets}`}
-                  </p>
-                </div>
-              </div>
-              <div className={styles.titlebox}>
-                <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
-                  <p>
-                    {`OUTCOME: ${eventOutcome[3]}` || `OUTCOME: ${parsedData.events[0].scores.away}`}
-                  </p>
-                </div>
-              </div>
-            </>
-            )}
           </div>
-
+          <div className={styles.titlebox}>
+            <div key="eventId" className="event-teams" data-testid="playing-teams-id">
+              <p>
+                {`TEAMS: ${eventTeams[1]}`}
+              </p>
+            </div>
+          </div>
+          <div className={styles.titlebox}>
+            <div key="marketId" className="event-market" data-testid="event-market-id">
+              <p>
+                {`BET: ${eventBet[2]}`}
+              </p>
+            </div>
+          </div>
+          <div className={styles.titlebox}>
+            <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
+              <p>
+                {`OUTCOME: ${eventOutcome[3]}`}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </>
   );
 }
-
-export const getStaticProps = async () => {
-  const response = await fetch(
-    'http://localhost:8888/football/live?primaryMarkets=true&outComes=true',
-  );
-  const parsedData = await response.json();
-  return {
-    props: {
-      parsedData,
-    },
-  };
-};

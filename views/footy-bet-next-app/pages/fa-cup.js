@@ -40,7 +40,7 @@ export default function GetLiveEvents() {
     <>
       <div className="footyevent" data-testid="footy-event-id">
         <div className={styles.container}>
-          <h1 className={styles.hone}>Featured Leagues</h1>
+          <h1 className={styles.hone}>Live Football Fixtures</h1>
           <div className={styles.titlebox}>
             <div key="loading-key">
               {isLoading && (
@@ -56,19 +56,13 @@ export default function GetLiveEvents() {
             return (
               <div key="eventId">
                 <div>
-                  <Link href="./singleEvents/eventTwo"><a className={styles.link}>{eventObj.data[0].linkedEventTypeName}</a></Link>
+                  <Link href="./singleEvents/eventFive"><a className={styles.link}>{eventObj.data[14].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./singleEvents/eventThree"><a className={styles.link}>{eventObj.data[1].linkedEventTypeName}</a></Link>
+                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./singleEvents/eventFour"><a className={styles.link}>{eventObj.data[3].linkedEventTypeName}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventOne"><a className={styles.link}>Czech U19 League</a></Link>
-                </div>
-                <div>
-                  <Link href="./fa-cup"><a className={styles.link}>English FA Cup</a></Link>
+                  <Link href="./singleEvents/eventSeven"><a className={styles.link}>{eventObj.data[16].name}</a></Link>
                 </div>
               </div>
             );

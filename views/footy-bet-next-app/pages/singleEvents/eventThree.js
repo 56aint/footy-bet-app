@@ -33,7 +33,8 @@ export default function GetEvent() {
           }),
         ];
       })
-      .then((response) => { return console.log('Promise message response', response); });
+      .then((response) => { return console.log('Promise message response', response); })
+      .catch((error) => { return console.log('Promise message error', error); });
 
     function handleMessage(response) {
       // console.log('Handling Single Event NO-2 message');
@@ -45,11 +46,25 @@ export default function GetEvent() {
       setLoading(false);
     }
     ws.onMessage.addListener(handleMessage);
-    return () => {
+    /* return () => {
+      ws.close();
+      return ws.removeAllListeners();
+    }; */
+   return () => {
+      ws.onClose.addListener((event) => {
+        if (event.wasClean) {
+          console.log(`Connection closed cleanly, code=${event.code}reason=${event.reason}`);
+        } else {
+          console.log('[close] Connection died');
+        }
+        ws.close();
+      });
+      ws.onError.addListener((error) => {
+        alert(`[error] ${error.message}`);
+      });
       return ws.removeAllListeners();
     };
   }, []);
-
 
   const leagueType = socketData.map((dataObj)=> {
     if (dataObj.type !== 'EVENT_DATA') return null;
