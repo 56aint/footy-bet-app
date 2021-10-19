@@ -32,7 +32,7 @@ export default function NavBar() {
             <Link href="/leagues">Leagues</Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">
+            <Link href="/market">
               <a>
                 Market
               </a>

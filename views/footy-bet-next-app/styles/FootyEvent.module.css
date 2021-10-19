@@ -11,6 +11,8 @@
   height: 82%;
   margin: auto;
   overflow: hidden;
+  /* text-overflow: ellipsis; */
+  /* float: left; */
 
 
   padding: 16px;
@@ -34,7 +36,7 @@
   justify-content: space-around;
   align-items: center;
   width: 100%;
-  font-size: 1.5em;
+  font-size: 1.3em;
 }
 /* .a{
   text-decoration: none;
@@ -43,7 +45,7 @@
 .link {
   text-decoration: none;
   color: #eef5ee;
-  font-size: medium;
+  font-size: large;
 }
 .link:hover {
    color: rgb(255, 81, 0)
