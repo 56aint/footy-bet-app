@@ -6,7 +6,7 @@ export default function NavBar() {
   return (
     <>
       <Head>
-        <title>Navbar</title>
+        <title>FOOTY-BET</title>
       </Head>
       <nav className={navStyles.nav} r>
         <ul className="navbar-links" data-testid="navbar-links-id">
@@ -34,23 +34,17 @@ export default function NavBar() {
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/market">
               <a>
-                Market
+              Bet-Market
               </a>
             </Link>
           </li>
-          <li className="navbar-links-item" data-testid="navbar-links-item-id">
+         {/*  <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/">
               <a>
                 Outcomes
               </a>
             </Link>
-          </li>
-          <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">Market Updates</Link>
-          </li>
-          {/* <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">Outcomes Updates</Link>
-          </li> */}
+              </li>     */} 
         </ul>
       </nav>
     </>

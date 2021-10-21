@@ -3,7 +3,7 @@ import Link from 'next/link';
 import socketConnection from './api/apiCalls/connection';
 import styles from '../styles/FootyEvent.module.css';
 
-export default function GetLiveEvents() {
+export default function GetLiveMarket() {
   const [isLoading, setLoading] = useState(true);
   const [socketData, setSocketData] = useState([]);
 

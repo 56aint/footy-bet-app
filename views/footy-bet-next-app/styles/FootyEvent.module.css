@@ -19,7 +19,7 @@
   top: 57%;
   left: 50%;
   width: 37%;
-  background-color:#272424;
+  background-color:#476945;
   color: #eef5ee;
   text-align: center;
   /* border-radius: 4px; */
@@ -38,20 +38,64 @@
   width: 100%;
   font-size: 1.3em;
 }
+
+.titlebox p span:nth-child(1){
+  color:rgb(2, 32, 2);  
+  font-weight: bolder
+}
+.titlebox p span:nth-child(2){
+  color:red;
+}
+
 /* .a{
   text-decoration: none;
   color: #eef5ee;
 } */
+.responstable {
+  /* margin: 1em 0; */
+  width: 100%;
+  overflow: hidden;
+  /* background: #FFF; */
+  color: #da0101;
+  border-radius: 10px;
+  border: 1px solid #167F92;
+  
+}
+.responstable th {
+  border: 1px solid #e6d9d9;
+  padding: 1em;
+}
+.responstable tr:nth-child(odd) {
+  background-color: #D6EEEE;
+}
+.responstable tr:nth-child(even) {
+  background-color: #1b8ce9;
+}
+
+.market {
+  /* text-align: justify; */
+  font-size: larger;
+  /* text-align: match-parent; */
+  /* border: 1px solid #a70691; */
+  position:absolute;
+  left: 260px;
+  margin-top: -8px;
+  margin-bottom: 100px;
+}
+.market a {
+  text-decoration: none;
+}
+
 .link {
   text-decoration: none;
-  color: #eef5ee;
+  color: #FFFF;
   font-size: large;
 }
 .link:hover {
    color: rgb(255, 81, 0)
 }
 .link:visited {
-  color: rgb(133, 240, 156);
+  color: rgb(2, 34, 9);
 }
 .link:active {
   color: rgb(247, 199, 199);
