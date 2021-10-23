@@ -21,13 +21,25 @@ export default function GetEvent() {
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['m.93649849'],
+            keys: ['m.93778234'],
             type: 'getMarket',
             id: 93778234,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367530501'],
+            keys: ['o.368087296'],
+            type: 'getOutcome',
+            id: 368087296,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.368087297'],
+            type: 'getOutcome',
+            id: 368087297,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.368087298'],
             type: 'getOutcome',
             id: 368087298,
           }),
@@ -66,12 +78,12 @@ export default function GetEvent() {
     };
   }, []);
 
-  const leagueType = socketData.map((dataObj)=> {
+  const leagueType = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.typeName;
   });
 
-  const leagueName = socketData.map((dataObj)=> {
+  const leagueName = socketData.map((dataObj) => {
     if (dataObj.type !== 'EVENT_DATA') return null;
     return dataObj.data.linkedEventTypeName;
   });
@@ -88,9 +100,47 @@ export default function GetEvent() {
     if (dataObj.type !== 'MARKET_DATA') return null;
     return dataObj.data.name.toString().replace(/,/g, ' ');
   });
-  const eventOutcome = socketData.map((dataObj) => {
+  const eventOutcomeOne = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
-    return dataObj.data.name.toString();
+    if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 368087296)) {
+      return dataObj.data.name.toString();
+    }
+    return null;
+  });
+  const eventOutcomeTwo = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 368087297)) {
+      return dataObj.data.name.toString();
+    }
+    return null;
+  });
+  const eventOutcomeThree = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 368087298)) {
+      return dataObj.data.name.toString();
+    }
+    return null;
+  });
+  const eventOutcomeOnePrice = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 368087296)) {
+      return dataObj.data.price.decimal.toString();
+    }
+    return null;
+  });
+  const eventOutcomeTwoPrice = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 368087297)) {
+      return dataObj.data.price.decimal.toString();
+    }
+    return null;
+  });
+  const eventOutcomeThreePrice = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 368087298)) {
+      return dataObj.data.price.decimal.toString();
+    }
+    return null;
   });
 
   return (
@@ -109,32 +159,70 @@ export default function GetEvent() {
               )}
             </div>
           </div>
-          <div className={styles.titlebox}>
-            <div key="eventId" className="event-time" data-testid="event-time-id">
-              <p>{`DATE: ${eventTime[1]}`}</p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="eventId" className="event-teams" data-testid="playing-teams-id">
-              <p>
-                {`TEAMS: ${eventTeams[1]}`}
-              </p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="marketId" className="event-market" data-testid="event-market-id">
-              <p>
-                {`BET: ${eventBet[2]}`}
-              </p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
-              <p>
-                {`OUTCOME: ${eventOutcome[3]}`}
-              </p>
-            </div>
-          </div>
+
+          {socketData && (
+            <>
+              <table className={styles.responstable}>
+                <tr>
+                  <div className={styles.titlebox}>
+                    <div key="eventId" className="event-time" data-testid="event-time-id">
+                      <p>{`DATE: ${eventTime[1]}`}</p>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div className={styles.titlebox}>
+                    <div key="eventId" className="event-teams" data-testid="playing-teams-id">
+                      <p>
+                        {`TEAMS: ${eventTeams[1]}`}
+                      </p>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div className={styles.titlebox}>
+                    <div key="marketId" className="event-market" data-testid="event-market-id">
+                      {/* <table className="responstable"> */}
+                      <tr>
+                        <p>
+                          <span>{`${eventOutcomeOne[3]} `}</span>
+                          <span>{ `${eventOutcomeOnePrice[3]} ` }</span>
+                        </p>
+                      </tr>
+                      {/* <tr> */}
+                      <p>
+                        <span>{`${eventOutcomeTwo[4]} `}</span>
+                        <span>{ `${eventOutcomeTwoPrice[4]} ` }</span>
+                      </p>
+                      {/* </tr> */}
+                      <tr>
+                        <p>
+                          <span>{`${eventOutcomeThree[5]} `}</span>
+                          <span>{ `${eventOutcomeThreePrice[5]} ` }</span>
+                        </p>
+                      </tr>
+                      {/* </table> */}
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <div className={styles.titlebox}>
+                    <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
+                      <p>
+                        {`OUTCOME: ${eventOutcomeThree[5]}`}
+                      </p>
+                    </div>
+                  </div>
+                </tr>
+                <tr>
+                  <th>
+                    <td />
+                  </th>
+                </tr>
+              </table>
+            </>
+          )}
+
         </div>
       </div>
     </>

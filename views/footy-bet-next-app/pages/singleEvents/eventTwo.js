@@ -28,7 +28,7 @@ export default function GetEvent() {
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367530501'],
+            keys: ['o.367530493'],
             type: 'getOutcome',
             id: 367530493,
           }),
@@ -100,24 +100,30 @@ export default function GetEvent() {
     if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 367530493)) {
       return dataObj.data.name.toString();
     }
+    return null;
   });
   const eventOutcomeTwo = socketData.map((dataObj) => {
-    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if (dataObj.type !== 'OUTCOME_DATA') {
+      return null;
+    }
     if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 367530501)) {
       return dataObj.data.name.toString();
     }
+    return null;
   });
   const eventOutcomeOnePrice = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
     if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 367530493)) {
       return dataObj.data.price.decimal.toString();
     }
+    return null;
   });
   const eventOutcomeTwoPrice = socketData.map((dataObj) => {
     if (dataObj.type !== 'OUTCOME_DATA') return null;
     if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 367530501)) {
       return dataObj.data.price.decimal.toString();
     }
+    return null;
   });
 
   return (
@@ -158,7 +164,6 @@ export default function GetEvent() {
                     <span>{`${eventOutcomeOnePrice[3]} `}</span>
                   </p>
                 </tr>
-
                 <p>
                   {`${eventBet[2]} `}
                   <span>{`${eventOutcomeTwo[4]} `}</span>

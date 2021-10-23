@@ -158,6 +158,109 @@ export default function GetLiveEvents() {
       return mktObj.data.name;
     }
   });
+  const marketThree = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649434)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketFour = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650155)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketFive = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649360)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketSix = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650016)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketSeven = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650051)) {
+      return mktObj.data.name;
+    }
+  });
+  console.log('marketSeven', marketSeven);
+  const marketEight = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93648663)) {
+      return mktObj.data.name;
+    }
+  });
+  console.log('marketEight', marketEight);
+  const marketNine = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650079)) {
+      return mktObj.data.name;
+    }
+  });
+  // console.log('marketEight', marketEight);
+  const marketTen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650072)) {
+      return mktObj.data.name;
+    }
+  });
+  // console.log('marketNine', marketNine[12]);
+  const marketEleven = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650166)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketTwelve = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650230)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketThirteen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650114)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketFourteen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650205)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketFivteen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93745088)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketSixteen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649215)) {
+      return mktObj.data.name;
+    }
+  });
+
+  const marketSeventeen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649250)) {
+      return mktObj.data.name;
+    }
+  });
+  // console.log('marketSixteen', marketSixteen[18])
+  const marketEighteen = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93778225)) {
+      return mktObj.data.name;
+    }
+  });
+  // console.log('marketSeventeen', marketSeventeen[19])
 
   return (
     <>
@@ -193,7 +296,7 @@ export default function GetLiveEvents() {
                   </tr>
                   <tr>
                     <th>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[1].name}</a></Link>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[1].name}</a></Link>
                       <td>
                         <div className={styles.market}>
                           <Link href="./allLiveEvents">
@@ -203,59 +306,206 @@ export default function GetLiveEvents() {
                       </td>
                     </th>
                   </tr>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[1].name}</a></Link>
-                  </div>
-
-
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[2].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[3].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[4].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[5].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[6].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[7].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[8].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[9].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[10].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[11].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[12].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[13].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./singleEvents/eventFive"><a className={styles.link}>{eventObj.data[14].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./singleEvents/eventSix"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./singleEvents/eventSeven"><a className={styles.link}>{eventObj.data[16].name}</a></Link>
-                  </div>
-                  <div>
-                    <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[17].name}</a></Link>
-                  </div>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[2].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketThree}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[3].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketFour}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[4].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketFive}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[5].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketSix}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[6].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketSeven}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[7].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketEight[10]}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[8].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketNine}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[9].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketTen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[10].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketEleven}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[11].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketTwelve}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[12].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketThirteen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[13].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketFourteen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./singleEvents/eventFive"><a className={styles.link}>{eventObj.data[14].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./singleEvents/eventFive">
+                            <a>{marketFivteen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./singleEvents/eventSix"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./singleEvents/eventSix">
+                            <a>{marketSixteen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./singleEvents/eventSeven"><a className={styles.link}>{eventObj.data[16].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./singleEvents/eventSeven">
+                            <a>{marketSeventeen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <th>
+                      <Link href="./allLiveEvents"><a className={styles.link}>{eventObj.data[17].name}</a></Link>
+                      <td>
+                        <div className={styles.market}>
+                          <Link href="./allLiveEvents">
+                            <a>{marketEighteen}</a>
+                          </Link>
+                        </div>
+                      </td>
+                    </th>
+                  </tr>
+                  <tr>
+                    <td />
+                  </tr>
+                  <tr>
+                    <th>
+                      <td />
+                    </th>
+                  </tr>
                 </table>
               </div>
             );
