@@ -14,7 +14,7 @@ export default function GetEvent() {
         return [
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['e.21249939'],
+            keys: ['e.21249941'],
             clearSubscription: false,
             type: 'getEvent',
             id: 21249941,
@@ -29,7 +29,7 @@ export default function GetEvent() {
             type: 'subscribe',
             keys: ['o.367530501'],
             type: 'getOutcome',
-            id: 367528759,
+            id: 367528810,
           }),
         ];
       })

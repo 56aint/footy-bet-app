@@ -1,4 +1,3 @@
-/* eslint-disable no-dupe-keys */
 import { useState, useEffect } from 'react';
 import socketConnection from '../api/apiCalls/connection';
 import styles from '../../styles/FootyEvent.module.css';
@@ -13,30 +12,59 @@ export default function GetEvent() {
     ws.open()
       .then(() => {
         return [
+          // 
           ws.sendRequest({
-            type: 'subscribe',
-            keys: ['e.21249939'],
-            clearSubscription: false,
-            type: 'getEvent',
-            id: 21249939,
-          }),
-          ws.sendRequest({
-            type: 'subscribe',
-            keys: ['m.93649849'],
+            keys: ['m.93649250'],
             type: 'getMarket',
-            id: 93649849,
+            id: 93649250,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367530493'],
+            keys: ['o.367528499'],
             type: 'getOutcome',
-            id: 367530493,
+            id: 367528499,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367530501'],
+            keys: ['o.367528505'],
             type: 'getOutcome',
-            id: 367530501,
+            id: 367528505,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367528510'],
+            type: 'getOutcome',
+            id: 367528510,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367528515'],
+            type: 'getOutcome',
+            id: 367528515,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367528521'],
+            type: 'getOutcome',
+            id: 367528521,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367528527'],
+            type: 'getOutcome',
+            id: 367528527,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367528537'],
+            type: 'getOutcome',
+            id: 367528537,
+          }),
+          ws.sendRequest({
+            type: 'subscribe',
+            keys: ['o.367528542'],
+            type: 'getOutcome',
+            id: 367528542,
           }),
         ];
       })
@@ -73,26 +101,46 @@ export default function GetEvent() {
     };
   }, []);
 
-  const leagueType = socketData.map((dataObj) => {
-    if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.typeName;
+  const leagueType = socketData.map((outObj) => {
+    if (outObj.type !== 'OUTCOME_DATA') return null;
+    return outObj.data.typeName;
   });
 
-  const leagueName = socketData.map((dataObj) => {
-    if (dataObj.type !== 'EVENT_DATA') return null;
-    return dataObj.data.linkedEventTypeName;
+  const leagueName = socketData.map((outObj) => {
+    if (outObj.type !== 'OUTCOME_DATA') return null;
+    return outObj.data.linkedEventTypeName;
   });
-  const eventTime = socketData.map((dataObj) => {
-    if (dataObj.type !== 'EVENT_DATA') return null;
+
+  const marketOne = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649250)) {
+      return mktObj.data.name;
+    }
+  });
+  const marketOneBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649250)) {
+      return mktObj.data.livePriceLimit;
+    }
+  });
+  const suspendedBet = socketData.map((outObj) => {
+    if (outObj.type !== 'OUTCOME_DATA') return null;
+    if ((outObj.type === 'OUTCOME_DATA') && (outObj.data.result.result === '-')) {
+      return 'Suspended';
+    }
+    return outObj.data.result.result;
+  });
+  /* const eventTime = socketData.map((dataObj) => {
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.startTime.toString();
   });
 
   const eventTeams = socketData.map((dataObj) => {
-    if (dataObj.type !== 'EVENT_DATA') return null;
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.name.toString().replace(/,/g, ' ');
   });
   const eventBet = socketData.map((dataObj) => {
-    if (dataObj.type !== 'MARKET_DATA') return null;
+    if (dataObj.type !== 'OUTCOME_DATA') return null;
     return dataObj.data.name.toString().replace(/,/g, ' ');
   });
   const eventOutcomeOne = socketData.map((dataObj) => {
@@ -112,7 +160,7 @@ export default function GetEvent() {
     return null;
   });
   const eventOutcomeOnePrice = socketData.map((dataObj) => {
-    if (dataObj.type !== 'OUTCOME_DATA') return null;
+    if (dataObj.type !== 'OUTCOME_DATA) return null;
     if ((dataObj.type === 'OUTCOME_DATA') && (dataObj.data.outcomeId === 367530493)) {
       return dataObj.data.price.decimal.toString();
     }
@@ -124,11 +172,11 @@ export default function GetEvent() {
       return dataObj.data.price.decimal.toString();
     }
     return null;
-  });
+  }); */
 
   return (
     <>
-      <div className="footyevent" data-testid="footy-event-id">
+      <div className="footyevent" data-testid="market-outcome-id">
         <div className={styles.container}>
           <h1 className={styles.hone}>{leagueType}</h1>
           <h3 className={styles.hone}>{leagueName}</h3>
@@ -142,43 +190,27 @@ export default function GetEvent() {
               )}
             </div>
           </div>
-          <div className={styles.titlebox}>
-            <div key="eventId" className="event-time" data-testid="event-time-id">
-              <p>{`DATE: ${eventTime[1]}`}</p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="eventId" className="event-teams" data-testid="playing-teams-id">
-              <p>
-                {`TEAMS: ${eventTeams[1]}`}
-              </p>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="dataObj.eventId" className="event-market" data-testid="event-market-id">
-              <table className="responstable">
-                <tr>
-                  <p>
-                    {`${eventBet[2]} `}
-                    <span>{`${eventOutcomeOne[3]} `}</span>
-                    <span>{`${eventOutcomeOnePrice[3]} `}</span>
-                  </p>
-                </tr>
-                <p>
-                  {`${eventBet[2]} `}
-                  <span>{`${eventOutcomeTwo[4]} `}</span>
-                  <span>{`${eventOutcomeTwoPrice[4]} `}</span>
-                </p>
-              </table>
-            </div>
-          </div>
-          <div className={styles.titlebox}>
-            <div key="outcomeId" className="event-outcome" data-testid="event-outcome-id">
-              <p>
-                {`OUTCOME: ${eventOutcomeTwo[4]}`}
-              </p>
-            </div>
-          </div>
+          <p>{`${marketOne[1]} Bet Outcome`}</p>
+          {socketData.map((outObj) => {
+            if (outObj.type !== 'OUTCOME_DATA') return null;
+            return (
+              <div>
+                <table className={styles.responstable}>
+                  <tbody>
+                    <tr>
+                      {`${outObj.data.name}`}
+                    </tr>
+                    <tr>
+                      <th>{`${outObj.data.price.decimal}`}</th>
+                    </tr>
+                    <tr>
+                      <td>{`${suspendedBet[2]}`}</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            );
+          })}
         </div>
       </div>
     </>

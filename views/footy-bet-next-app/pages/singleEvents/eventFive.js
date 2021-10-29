@@ -14,20 +14,20 @@ export default function GetEvent() {
         return [
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['e.21249939'],
+            keys: ['e.21249940'],
             clearSubscription: false,
             type: 'getEvent',
             id: 21249940,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['m.93649849'],
+            keys: ['m.93649215'],
             type: 'getMarket',
             id: 93649215,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367530501'],
+            keys: ['o.367528350'],
             type: 'getOutcome',
             id: 367528350,
           }),

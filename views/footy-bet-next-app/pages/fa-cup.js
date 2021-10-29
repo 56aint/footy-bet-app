@@ -59,7 +59,7 @@ export default function GetLiveEvents() {
                   <Link href="./singleEvents/eventFive"><a className={styles.link}>{eventObj.data[14].name}</a></Link>
                 </div>
                 <div>
-                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
+                  <Link href="./markets/eventSixMarket"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
                 </div>
                 <div>
                   <Link href="./singleEvents/eventSeven"><a className={styles.link}>{eventObj.data[16].name}</a></Link>

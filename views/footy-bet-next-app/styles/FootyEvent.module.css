@@ -102,10 +102,10 @@
   font-size: large;
 }
 .link:hover {
-   color: rgb(255, 81, 0)
+   color: rgb(146, 50, 6)
 }
 .link:visited {
-  color: rgb(2, 34, 9);
+  color: rgb(35, 4, 214);
 }
 .link:active {
   color: rgb(247, 199, 199);

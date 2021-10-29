@@ -34,7 +34,7 @@ export default function NavBar() {
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/market">
               <a>
-              Bet-Market
+              Live Bet-Market
               </a>
             </Link>
           </li>
