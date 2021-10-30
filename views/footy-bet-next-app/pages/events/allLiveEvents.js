@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import socketConnection from './api/apiCalls/connection';
-import styles from '../styles/FootyEvent.module.css';
+import socketConnection from '../api/apiCalls/connection';
+import styles from '../../styles/FootyEvent.module.css';
 
 export default function GetLiveEvents() {
   const [isLoading, setLoading] = useState(true);
@@ -464,10 +464,10 @@ export default function GetLiveEvents() {
                   </tr>
                   <tr>
                     <th>
-                      <Link href="./singleEvents/eventSix"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
+                      <Link href="/outcomes/eventSixMarketOutcomes"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
                       <td>
                         <div className={styles.market}>
-                          <Link href="./singleEvents/eventSix">
+                          <Link href="/outcomes/eventSixMarketOutcomes">
                             <a>{marketSixteen}</a>
                           </Link>
                         </div>

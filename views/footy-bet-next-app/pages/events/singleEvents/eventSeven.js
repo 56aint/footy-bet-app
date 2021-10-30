@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import socketConnection from '../api/apiCalls/connection';
-import styles from '../../styles/FootyEvent.module.css';
+import socketConnection from '../../api/apiCalls/connection';
+import styles from '../../../styles/FootyEvent.module.css';
 
 export default function GetEvent() {
   const [isLoading, setLoading] = useState(true);
@@ -8,7 +8,7 @@ export default function GetEvent() {
 
   useEffect(() => {
     const ws = socketConnection();
-
+    // LiveEvent (fa) - Burton Albion (Reserves) V Mansfield Town FC (Reserves)
     ws.open()
       .then(() => {
         return [

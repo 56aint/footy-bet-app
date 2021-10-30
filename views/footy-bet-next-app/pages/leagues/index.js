@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import socketConnection from './api/apiCalls/connection';
-import styles from '../styles/FootyEvent.module.css';
+import socketConnection from '../api/apiCalls/connection';
+import styles from '../../styles/FootyEvent.module.css';
 
 export default function GetLiveEvents() {
   const [isLoading, setLoading] = useState(true);
@@ -40,7 +40,7 @@ export default function GetLiveEvents() {
     <>
       <div className="footyevent" data-testid="footy-event-id">
         <div className={styles.container}>
-          <h1 className={styles.hone}>Live Football Fixtures</h1>
+          <h1 className={styles.hone}>Featured Leagues</h1>
           <div className={styles.titlebox}>
             <div key="loading-key">
               {isLoading && (
@@ -56,13 +56,19 @@ export default function GetLiveEvents() {
             return (
               <div key="eventId">
                 <div>
-                  <Link href="./singleEvents/eventFive"><a className={styles.link}>{eventObj.data[14].name}</a></Link>
+                  <Link href="events/singleEvents/eventTwo"><a className={styles.link}>{eventObj.data[0].linkedEventTypeName}</a></Link>
                 </div>
                 <div>
-                  <Link href="./markets/eventSixMarket"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
+                  <Link href="events/singleEvents/eventThree"><a className={styles.link}>{eventObj.data[1].linkedEventTypeName}</a></Link>
                 </div>
                 <div>
-                  <Link href="./singleEvents/eventSeven"><a className={styles.link}>{eventObj.data[16].name}</a></Link>
+                  <Link href="events/singleEvents/eventFour"><a className={styles.link}>{eventObj.data[3].linkedEventTypeName}</a></Link>
+                </div>
+                <div>
+                  <Link href="events/singleEvents/eventOne"><a className={styles.link}>Czech U19 League</a></Link>
+                </div>
+                <div>
+                  <Link href="/leagues/fa-cup"><a className={styles.link}>English FA Cup</a></Link>
                 </div>
               </div>
             );

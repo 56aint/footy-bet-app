@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import socketConnection from '../api/apiCalls/connection';
-import styles from '../../styles/FootyEvent.module.css';
+import socketConnection from '../../api/apiCalls/connection';
+import styles from '../../../styles/FootyEvent.module.css';
 
 export default function GetEvent() {
   const [isLoading, setLoading] = useState(true);
@@ -8,28 +8,28 @@ export default function GetEvent() {
 
   useEffect(() => {
     const ws = socketConnection();
-
+    // LiveEvent (fa) - Barnet Reserves V Southend United Reserves
     ws.open()
       .then(() => {
         return [
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['e.21249940'],
+            keys: ['e.21249941'],
             clearSubscription: false,
             type: 'getEvent',
-            id: 21249940,
+            id: 21249941,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['m.93649215'],
+            keys: ['m.93649849'],
             type: 'getMarket',
-            id: 93649215,
+            id: 93649315,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367528350'],
+            keys: ['o.367530501'],
             type: 'getOutcome',
-            id: 367528350,
+            id: 367528810,
           }),
         ];
       })

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import socketConnection from './api/apiCalls/connection';
-import styles from '../styles/FootyEvent.module.css';
+import socketConnection from '../api/apiCalls/connection';
+import styles from '../../styles/FootyEvent.module.css';
 
 export default function GetLiveMarket() {
   const [isLoading, setLoading] = useState(true);
@@ -9,7 +9,6 @@ export default function GetLiveMarket() {
 
   useEffect(() => {
     const ws = socketConnection();
-
     ws.open()
       .then(() => {
         return [
@@ -67,7 +66,7 @@ export default function GetLiveMarket() {
             type: 'getMarket',
             id: 93650079,
           }),
-          ws.sendRequest({
+         /*  ws.sendRequest({
             keys: ['m.93648663'],
             type: 'getMarket',
             id: 93650072,
@@ -126,7 +125,7 @@ export default function GetLiveMarket() {
             keys: ['m.93648663'],
             type: 'getMarket',
             id: 93649315,
-          }),
+          }), */
         ];
       })
       .then((response) => { 
@@ -213,7 +212,7 @@ export default function GetLiveMarket() {
     }
   });
   // console.log('marketNine', marketNine[12]);
-  const marketEleven = socketData.map((mktObj) => {
+  /* const marketEleven = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93650166)) {
       return mktObj.data.name;
@@ -282,7 +281,7 @@ export default function GetLiveMarket() {
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649315)) {
       return mktObj.data.name;
     }
-  });
+  }); */
   /* const marketTwenty = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649415)) {
@@ -316,7 +315,7 @@ export default function GetLiveMarket() {
             <>
               <div>
                 <div>
-                  <Link href="./singleEvents/eventTwo"><a className={styles.link}>{marketOne[2]}</a></Link>
+                  <Link href="/events/singleEvents/eventTwo"><a className={styles.link}>{marketOne[2]}</a></Link>
                 </div>
 
                 <div>
@@ -354,7 +353,7 @@ export default function GetLiveMarket() {
                 <div>
                   <Link href="./market"><a className={styles.link}>{marketTen[11]}</a></Link>
                 </div>
-
+{/* 
                 <div>
                   <Link href="./market"><a className={styles.link}>{marketEleven[13]}</a></Link>
                 </div>
@@ -394,7 +393,7 @@ export default function GetLiveMarket() {
                 </div>
                 <div>
                   <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyOne[22]}</a></Link>
-                </div>
+                </div> */}
               </div>
             </>
             )}

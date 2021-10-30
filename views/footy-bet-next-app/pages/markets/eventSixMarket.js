@@ -241,7 +241,7 @@ export default function GetLiveMarket() {
     }
   });
   // console.log('marketNine', marketNine[12]);
-  const marketEleven = socketData.map((mktObj) => {
+  /* const marketEleven = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93777660)) {
       return mktObj.data.name;
@@ -343,7 +343,7 @@ export default function GetLiveMarket() {
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93779109)) {
       return mktObj.data.name;
     }
-  });
+  }); */
 
   return (
     <>
@@ -375,42 +375,42 @@ export default function GetLiveMarket() {
                   {/* <a>{`Bet Limit: ${marketOneBetLimit[1]}`}</a> */}
                 </div>
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketTwo[2]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketTwo[2]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketThree[3]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketThree[3]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketFour[4]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketFour[4]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketFive[5]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketFive[5]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketSix[6]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketSix[6]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketSeven[7]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketSeven[7]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketEight[8]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketEight[8]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketNine[9]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketNine[9]}</a></Link>
                 </div>
 
                 <div>
-                  <Link href="./market"><a className={styles.link}>{marketTen[10]}</a></Link>
+                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketTen[10]}</a></Link>
                 </div>
 
-                <div>
+                {/* <div>
                   <Link href="./market"><a className={styles.link}>{marketEleven[11]}</a></Link>
                 </div>
 
@@ -461,7 +461,7 @@ export default function GetLiveMarket() {
                 </div>
                 <div>
                   <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyFive[25]}</a></Link>
-                </div>
+                </div> */}
                 {/* </table> */}
               </div>
             </>

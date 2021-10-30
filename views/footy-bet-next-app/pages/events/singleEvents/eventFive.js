@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import socketConnection from '../api/apiCalls/connection';
-import styles from '../../styles/FootyEvent.module.css';
+import socketConnection from '../../api/apiCalls/connection';
+import styles from '../../../styles/FootyEvent.module.css';
 
 export default function GetEvent() {
   const [isLoading, setLoading] = useState(true);
@@ -8,28 +8,28 @@ export default function GetEvent() {
 
   useEffect(() => {
     const ws = socketConnection();
-
+    // LiveEvent (fa) -Wigan Athletic Reserves 1 V 0 Fleetwood Town Reserves
     ws.open()
       .then(() => {
         return [
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['e.21249941'],
+            keys: ['e.21249940'],
             clearSubscription: false,
             type: 'getEvent',
-            id: 21249941,
+            id: 21249940,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['m.93649849'],
+            keys: ['m.93649215'],
             type: 'getMarket',
-            id: 93649315,
+            id: 93649215,
           }),
           ws.sendRequest({
             type: 'subscribe',
-            keys: ['o.367530501'],
+            keys: ['o.367528350'],
             type: 'getOutcome',
-            id: 367528810,
+            id: 367528350,
           }),
         ];
       })

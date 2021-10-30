@@ -1,7 +1,7 @@
 /* eslint-disable no-dupe-keys */
 import { useState, useEffect } from 'react';
-import socketConnection from '../api/apiCalls/connection';
-import styles from '../../styles/FootyEvent.module.css';
+import socketConnection from '../../api/apiCalls/connection';
+import styles from '../../../styles/FootyEvent.module.css';
 
 export default function GetEvent() {
   const [isLoading, setLoading] = useState(true);
@@ -9,7 +9,7 @@ export default function GetEvent() {
 
   useEffect(() => {
     const ws = socketConnection();
-
+    // LiveEvent (CSLeague) -Shanghai Shenhua V Shandong Luneng Taishan
     ws.open()
       .then(() => {
         return [

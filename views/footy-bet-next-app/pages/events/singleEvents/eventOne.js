@@ -1,7 +1,7 @@
 /* eslint-disable no-dupe-keys */
 import { useState, useEffect } from 'react';
-import socketConnection from '../api/apiCalls/connection';
-import styles from '../../styles/FootyEvent.module.css';
+import socketConnection from '../../api/apiCalls/connection';
+import styles from '../../../styles/FootyEvent.module.css';
 
 // const ws = socketConnection();
 
@@ -12,6 +12,7 @@ export default function GetEvent({ parsedData }) {
 
   useEffect(() => {
     const ws = socketConnection();
+    // LiveEvent (Czech U19 League) -FK Mladá Boleslav U19 V SK Sigma Olomouc U19 (FT 2v0)
     ws.open()
       .then(() => {
         return [
