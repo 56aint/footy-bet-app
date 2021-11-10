@@ -81,6 +81,9 @@
 .responstable tr:nth-child(even) {
   background-color: #1b8ce9;
 }
+.responstable p span:nth-child(1){
+  color:red;
+}
 
 .market {
   /* text-align: justify; */

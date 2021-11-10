@@ -15,14 +15,6 @@ export default function NavBar() {
               Home
             </Link>
           </li>
-         {/*  <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link
-              className="navbar-item-myTeam"
-              href="/events/singleEvents/eventOne"
-            >
-              <a>My Team</a>
-            </Link>
-          </li> */}
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/events/allLiveEvents">
               <a>Live Football</a>
@@ -34,17 +26,10 @@ export default function NavBar() {
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link href="/markets/market">
               <a>
-              Live Bet-Market
+                Live Bet-Market
               </a>
             </Link>
           </li>
-         {/*  <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/">
-              <a>
-                Outcomes
-              </a>
-            </Link>
-              </li>     */} 
         </ul>
       </nav>
     </>

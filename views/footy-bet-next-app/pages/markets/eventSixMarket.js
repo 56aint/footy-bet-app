@@ -148,6 +148,17 @@ export default function GetLiveMarket() {
             type: 'getMarket',
             id: 93779109,
           }),
+          // Half Time Both Teams To Score
+          ws.sendRequest({
+            keys: ['m.367529335'],
+            type: 'getMarket',
+            id: 367529335,
+          }),
+          ws.sendRequest({
+            keys: ['m.367529346'],
+            type: 'getMarket',
+            id: 367529346,
+          }),
         ];
       })
       .then((response) => {
@@ -171,6 +182,12 @@ export default function GetLiveMarket() {
 
   /* const socketDataOne = socketData[1];
   console.log('socketDataOne', socketDataOne); */
+  /* const marketOne = socketData.filter((mktObj) => mktObj.type === 'market').map(mktObj => {
+    if (mktObj.data.marketId === 93649250) {
+      return mktObj.data.name;
+    }
+  });
+  console.log('marketOne' , marketOne); */
   const marketOne = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649250)) {
@@ -190,10 +207,24 @@ export default function GetLiveMarket() {
       return mktObj.data.name;
     }
   });
+  // console.log('marketTwo', marketTwo);
+  const marketTwoBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649487)) {
+      return mktObj.data.liabilities.livePriceLimit;
+    }
+  });
+  // console.log('marketTwoBetLimit', marketTwoBetLimit);
   const marketThree = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649386)) {
       return mktObj.data.name;
+    }
+  });
+  const marketThreeBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649386)) {
+      return mktObj.data.liabilities.livePriceLimit;
     }
   });
   const marketFour = socketData.map((mktObj) => {
@@ -202,16 +233,34 @@ export default function GetLiveMarket() {
       return mktObj.data.name;
     }
   });
+  const marketFourBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649189)) {
+      return mktObj.data.liabilities.livePriceLimit;
+    }
+  });
   const marketFive = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649310)) {
       return mktObj.data.name;
     }
   });
+  const marketFiveBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649310)) {
+      return mktObj.data.liabilities.livePriceLimit;
+    }
+  });
   const marketSix = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649271)) {
       return mktObj.data.name;
+    }
+  });
+  const marketSixBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649271)) {
+      return mktObj.data.liabilities.livePriceLimit;
     }
   });
   const marketSeven = socketData.map((mktObj) => {
@@ -221,10 +270,22 @@ export default function GetLiveMarket() {
     }
   });
   // console.log('marketSeven', marketSeven)
+  const marketSevenBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649368)) {
+      return mktObj.data.liabilities.livePriceLimit;
+    }
+  });
   const marketEight = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649315)) {
       return mktObj.data.name;
+    }
+  });
+  const marketEightBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649315)) {
+      return mktObj.data.liabilities.livePriceLimit;
     }
   });
   const marketNine = socketData.map((mktObj) => {
@@ -233,11 +294,23 @@ export default function GetLiveMarket() {
       return mktObj.data.name;
     }
   });
+  const marketNineBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649235)) {
+      return mktObj.data.liabilities.livePriceLimit;
+    }
+  });
   // console.log('marketEight', marketEight);
   const marketTen = socketData.map((mktObj) => {
     if (mktObj.type !== 'MARKET_DATA') return null;
     if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649229)) {
       return mktObj.data.name;
+    }
+  });
+  const marketTenBetLimit = socketData.map((mktObj) => {
+    if (mktObj.type !== 'MARKET_DATA') return null;
+    if ((mktObj.type === 'MARKET_DATA') && (mktObj.data.marketId === 93649229)) {
+      return mktObj.data.liabilities.livePriceLimit;
     }
   });
   // console.log('marketNine', marketNine[12]);
@@ -365,104 +438,115 @@ export default function GetLiveMarket() {
             {socketData && (
             <>
               <div key="mktObj.marketId">
-                {/* <table className={styles.responstable}> */}
-                <div>
-                  <Link href="/outcomes/eventSixMarketOutcomes">
-                    <a className={styles.link}>
-                      {`${marketOne[1]}: (Bet Limit: ${marketOneBetLimit[1]})`}
-                    </a>
-                  </Link>
-                  {/* <a>{`Bet Limit: ${marketOneBetLimit[1]}`}</a> */}
-                </div>
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketTwo[2]}</a></Link>
-                </div>
+                <table className={styles.responstable}>
+                  <tbody>
+                  <tr>
+                    <p>
+                      <Link href="/outcomes/eventSixMarketOutcomes">
+                        <a className={styles.link}>
+                          {`${marketOne[1]}: `}
+                          <span>{`(Bet Limit: ${marketOneBetLimit[1]})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketTwo[2]}: `}
+                          <span>{`(Bet Limit: ${marketTwoBetLimit[2]})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketThree[3]}: `}
+                          <span>{`(Bet Limit: ${marketThreeBetLimit[3]})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketFour[4]}: `}
+                          <span>{`(Bet Limit: ${marketFourBetLimit[4]})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketFive[5]}: `}
+                          <span>{`(Bet Limit: ${marketFiveBetLimit[5]})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
 
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketThree[3]}</a></Link>
-                </div>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketSix[6]}: `}
+                          <span>{`(Bet Limit: ${marketSixBetLimit[6]}})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
 
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketFour[4]}</a></Link>
-                </div>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketSeven[7]}: `}
+                          <span>{`(Bet Limit: ${marketSevenBetLimit[7]}})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
 
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketFive[5]}</a></Link>
-                </div>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketEight[8]}: `}
+                          <span>{`(Bet Limit: ${marketEightBetLimit[8]}})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
 
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketSix[6]}</a></Link>
-                </div>
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketNine[9]}: `}
+                          <span>{`(Bet Limit: ${marketNineBetLimit[9]}})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
 
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketSeven[7]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketEight[8]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketNine[9]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="/markets/eventSixMarket"><a className={styles.link}>{marketTen[10]}</a></Link>
-                </div>
-
-                {/* <div>
-                  <Link href="./market"><a className={styles.link}>{marketEleven[11]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketTwelve[12]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketThirteen[13]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketFourteen[14]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketFivteen[15]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./singleEvents/eventFive"><a className={styles.link}>{marketSixteen[16]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketSeventeen[17]}</a></Link>
-                </div>
-
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketEighteen[18]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./market"><a className={styles.link}>{marketNineteen[19]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventSeven"><a className={styles.link}>{marketTwenty[20]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyOne[21]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyTwo[22]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyThree[23]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyFour[24]}</a></Link>
-                </div>
-                <div>
-                  <Link href="./singleEvents/eventSix"><a className={styles.link}>{marketTwentyFive[25]}</a></Link>
-                </div> */}
-                {/* </table> */}
+                  <tr>
+                    <p>
+                      <Link href="/markets/eventSixMarket">
+                        <a className={styles.link}>
+                          {`${marketTen[10]}: `}
+                          <span>{`(Bet Limit: ${marketTenBetLimit[10]}})`}</span>
+                        </a>
+                      </Link>
+                    </p>
+                  </tr>
+                  </tbody>
+                </table>
               </div>
             </>
             )}
