@@ -464,7 +464,7 @@ export default function GetLiveEvents() {
                   </tr>
                   <tr>
                     <th>
-                      <Link href="/outcomes/eventSixMarketOutcomes"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
+                      <Link href="/outcomes/eventSixMarketOutcomesOne"><a className={styles.link}>{eventObj.data[15].name}</a></Link>
                       <td>
                         <div className={styles.market}>
                           <Link href="/outcomes/eventSixMarketOutcomes">

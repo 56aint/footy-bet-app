@@ -440,111 +440,111 @@ export default function GetLiveMarket() {
               <div key="mktObj.marketId">
                 <table className={styles.responstable}>
                   <tbody>
-                  <tr>
-                    <p>
-                      <Link href="/outcomes/eventSixMarketOutcomes">
-                        <a className={styles.link}>
-                          {`${marketOne[1]}: `}
-                          <span>{`(Bet Limit: ${marketOneBetLimit[1]})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketTwo[2]}: `}
-                          <span>{`(Bet Limit: ${marketTwoBetLimit[2]})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketThree[3]}: `}
-                          <span>{`(Bet Limit: ${marketThreeBetLimit[3]})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketFour[4]}: `}
-                          <span>{`(Bet Limit: ${marketFourBetLimit[4]})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketFive[5]}: `}
-                          <span>{`(Bet Limit: ${marketFiveBetLimit[5]})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
+                    <tr>
+                      <p>
+                        <Link href="/outcomes/eventSixMarketOutcomesOne">
+                          <a className={styles.link}>
+                            {`${marketOne[1]}: `}
+                            <span>{`(Bet Limit: ${marketOneBetLimit[1]})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
+                    <tr>
+                      <p>
+                        <Link href="/outcomes/eventSixMarketOutcomesTwo">
+                          <a className={styles.link}>
+                            {`${marketTwo[2]}: `}
+                            <span>{`(Bet Limit: ${marketTwoBetLimit[2]})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
+                    <tr>
+                      <p>
+                        <Link href="/outcomes/eventSixMarketOutcomesThree">
+                          <a className={styles.link}>
+                            {`${marketThree[3]}: `}
+                            <span>{`(Bet Limit: ${marketThreeBetLimit[3]})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketFour[4]}: `}
+                            <span>{`(Bet Limit: ${marketFourBetLimit[4]})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketFive[5]}: `}
+                            <span>{`(Bet Limit: ${marketFiveBetLimit[5]})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
 
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketSix[6]}: `}
-                          <span>{`(Bet Limit: ${marketSixBetLimit[6]}})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketSix[6]}: `}
+                            <span>{`(Bet Limit: ${marketSixBetLimit[6]}})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
 
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketSeven[7]}: `}
-                          <span>{`(Bet Limit: ${marketSevenBetLimit[7]}})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketSeven[7]}: `}
+                            <span>{`(Bet Limit: ${marketSevenBetLimit[7]}})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
 
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketEight[8]}: `}
-                          <span>{`(Bet Limit: ${marketEightBetLimit[8]}})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketEight[8]}: `}
+                            <span>{`(Bet Limit: ${marketEightBetLimit[8]}})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
 
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketNine[9]}: `}
-                          <span>{`(Bet Limit: ${marketNineBetLimit[9]}})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketNine[9]}: `}
+                            <span>{`(Bet Limit: ${marketNineBetLimit[9]}})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
 
-                  <tr>
-                    <p>
-                      <Link href="/markets/eventSixMarket">
-                        <a className={styles.link}>
-                          {`${marketTen[10]}: `}
-                          <span>{`(Bet Limit: ${marketTenBetLimit[10]}})`}</span>
-                        </a>
-                      </Link>
-                    </p>
-                  </tr>
+                    <tr>
+                      <p>
+                        <Link href="/markets/eventSixMarket">
+                          <a className={styles.link}>
+                            {`${marketTen[10]}: `}
+                            <span>{`(Bet Limit: ${marketTenBetLimit[10]}})`}</span>
+                          </a>
+                        </Link>
+                      </p>
+                    </tr>
                   </tbody>
                 </table>
               </div>

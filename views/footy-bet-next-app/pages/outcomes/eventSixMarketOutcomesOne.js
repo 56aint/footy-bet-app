@@ -13,6 +13,7 @@ export default function GetEvent() {
       .then(() => {
         return [
           // LiveEvents(fa) Barnet Reserves V Southend United Reserves
+          // name: "Half-Time/Full-Time"
           ws.sendRequest({
             keys: ['m.93649250'],
             type: 'getMarket',
