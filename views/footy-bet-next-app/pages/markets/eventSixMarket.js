@@ -472,7 +472,7 @@ export default function GetLiveMarket() {
                     </tr>
                     <tr>
                       <p>
-                        <Link href="/markets/eventSixMarket">
+                        <Link href="/outcomes/eventSixMarketOutcomesFour">
                           <a className={styles.link}>
                             {`${marketFour[4]}: `}
                             <span>{`(Bet Limit: ${marketFourBetLimit[4]})`}</span>
@@ -482,7 +482,7 @@ export default function GetLiveMarket() {
                     </tr>
                     <tr>
                       <p>
-                        <Link href="/markets/eventSixMarket">
+                        <Link href="/outcomes/eventSixMarketOutcomesFive">
                           <a className={styles.link}>
                             {`${marketFive[5]}: `}
                             <span>{`(Bet Limit: ${marketFiveBetLimit[5]})`}</span>
