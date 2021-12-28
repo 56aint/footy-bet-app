@@ -59,6 +59,19 @@
       I have used **sinon** to mock WebSocket Server and to spy/stub connection-code.
       nyc for code coverage
 
+   **unit/component testing with cypress**
+   ```bash
+      Install: -D cypress @cypress/react @cypress/webpack-dev-server @testing-library/cypress html-webpack-plugin webpack webpack-dev-server
+      Initialise cypress: npx cypress open
+   ```
+      Library set up for component-testing
+       There is a need to inject Next.js Component Testing plugin into Cypress @ `*cypress/plugin/index.js*`
+      Cypress-configuration for component-testing
+       @ cypress.json:
+         {
+           "nodeVersion": "system"
+         }
+
    
   ## Frontend
   1. I decided to make the UI simple by starting with pure `html`, `css` & `vanillaJS`. Then later incorporated: jquery, and move on to react and next.js
