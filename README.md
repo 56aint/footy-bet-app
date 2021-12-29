@@ -59,6 +59,16 @@
       I have used **sinon** to mock WebSocket Server and to spy/stub connection-code.
       nyc for code coverage
 
+**unit testing with jest & react-testing-library**
+   ```bash
+      Install: npm add -D @testing-library/jest-dom @testing-library/react babel-jest jest-css-modules jest
+   ```
+      Library set up:
+       There is a need for a few configurations  
+       @ `*config/.babelrc*`
+         `*config/jest.config.js*`
+         `*config/jest.setup.js*`
+
    
   ## Frontend
   1. I decided to make the UI simple by starting with pure `html`, `css` & `vanillaJS`. Then later incorporated: jquery, and move on to react and next.js
