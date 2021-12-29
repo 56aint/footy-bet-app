@@ -1,6 +1,6 @@
 module.exports = {
   rootDir: '../',
-  setupFilesAfterEvn: ['./config/jest.setup.js'],
+  setupFilesAfterEnv: ['./config/jest.setup.js'],
   transform: {
     '\\.js$': ['babel-jest', { configFile: './config/.babelrc' }],
   },
@@ -10,4 +10,5 @@ module.exports = {
   verbose: true,
   collectCoverage: true,
   coveragePathIgnorePatterns: ['<rootDir>/test/test-utils.js'],
+  testEnvironment: 'jsdom',
 };
