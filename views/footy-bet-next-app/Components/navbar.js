@@ -8,7 +8,7 @@ export default function NavBar() {
       <Head>
         <title>FOOTY-BET</title>
       </Head>
-      <nav className={navStyles.nav} r>
+      <nav className={navStyles.nav} /* role='navigation' */>
         <ul className="navbar-links" data-testid="navbar-links-id">
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link className="navbar-item-home" href="/">
@@ -16,7 +16,7 @@ export default function NavBar() {
             </Link>
           </li>
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
-            <Link href="/events/allLiveEvents">
+            <Link  href="/events/allLiveEvents">
               <a>Live Football</a>
             </Link>
           </li>
