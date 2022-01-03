@@ -4,12 +4,13 @@ import navStyles from '../styles/Nav.module.css';
 
 export default function NavBar() {
   return (
+    
     <>
       <Head>
         <title>FOOTY-BET</title>
-      </Head>
+      </Head  >
       <nav className={navStyles.nav} /* role='navigation' */>
-        <ul className="navbar-links" data-testid="navbar-links-id">
+        <ul className="navbar-links" data-testid="navbar-links-id"> 
           <li className="navbar-links-item" data-testid="navbar-links-item-id">
             <Link className="navbar-item-home" href="/">
               Home

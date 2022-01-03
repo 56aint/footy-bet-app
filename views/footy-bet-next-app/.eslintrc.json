@@ -1,49 +1,55 @@
 {
-  "root": true,
-  "parser": "babel-eslint",
-  "extends": [
-    "eslint:recommended",
-    "plugin:react/recommended",
-    "plugin:import/errors",
-    "plugin:import/warnings",
-    "plugin:jsx-a11y/recommended",
-    "plugin:react-hooks/recommended",
-    "airbnb",
-    "plugin:jest/recommended"
-  ],
-  "env": {
-    "browser": true,
-    "commonjs": true,
-    "es6": true,
-    "node": true
-  },
-  "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module",
-    "ecmaFeatures": {
-      "jsx": true
-    }
-  },
-  "settings": {
-    "react": {
-      "version": "detect"
-    }
-  },
-  "plugins": [],
-  "rules": {
-    "arrow-body-style": ["error", "always"],
-    "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off",
-    "react/jsx-filename-extension": [
-      1,
-      {
-        "extensions": [".js", ".jsx"]
-      }
+    "env": {
+        "browser": true,
+        "es2021": true,
+        "es6": true,
+        "commonjs": true,
+        "node": true,
+        "jest/globals": true
+    },
+    "extends": [
+        "prettier",
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:import/errors",
+        "plugin:import/warnings",
+        "plugin:jsx-a11y/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:@next/next/recommended",
+        "airbnb",
+        "plugin:jest/recommended"
     ],
-    "react/jsx-props-no-spreading": [0],
-    "no-underscore-dangle": [0]
-  },
-  "globals": {
-    "React": "writable"
-  }
+    "parserOptions": {
+        "ecmaFeatures": {
+            "jsx": true
+        },
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": ["jest"],
+    "rules": {
+        "arrow-body-style": ["error", "always"],
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",
+        "react/jsx-filename-extension": [
+            1,
+            {
+              "extensions": [".js", ".jsx"]
+            }
+          ],
+        "react/jsx-props-no-spreading": [0],
+        "no-underscore-dangle": [0],
+        "max-lines-per-function": 0,
+        "padding-line-between-statements": [
+          "error",
+          { "blankLine": "always", "prev": "*", "next": "return" },
+          { "blankLine": "always", "prev": ["const", "let", "var"], "next": "*"},
+         { "blankLine": "any",    "prev": ["const", "let", "var"], "next": ["const", "let", "var"]}
+          ],
+        "object-curly-spacing": ["error", "always"],
+        "jest/no-disabled-tests": "warn",
+        "jest/no-focused-tests": "error",
+        "jest/no-identical-title": "error",
+        "jest/prefer-to-have-length": "warn","jest/valid-expect": "error"
+    }
 }

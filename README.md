@@ -61,7 +61,8 @@
 
 **unit testing with jest & react-testing-library**
    ```bash
-      Install: npm add -D @testing-library/jest-dom @testing-library/react babel-jest jest-css-modules jest
+      Install: npm add -D @types/jest @testing-library/jest-dom @testing-library/react babel-jest jest-css-modules jest
+             : npm add --dev eslint eslint-plugin-jest
    ```
       Library set up:
        There is a need for a few configurations  
